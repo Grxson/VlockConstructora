@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeCraft | Consultoría de Software</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #8b5cf6;
+        --secondary: #ec4899;
+        --dark: #0f172a;
+        --light: #f8fafc;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #f8fafc;
+        transition: all 0.3s ease;
+      }
+
+      .dark body {
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #f8fafc;
+      }
+
+      .light body {
+        background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+        color: #1e293b;
+      }
+
+      .gradient-bg {
+        background: linear-gradient(
+          135deg,
+          var(--secondary),
+          var(--primary),
+          #3b82f6
+        );
+        background-size: 200% 200%;
+        animation: gradient 10s ease infinite;
+      }
+
+      .gradient-text {
+        background: linear-gradient(90deg, var(--secondary), var(--primary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .btn-primary {
+        background: linear-gradient(45deg, var(--secondary), var(--primary));
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-primary:active {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all 0.4s;
+        background: linear-gradient(45deg, var(--secondary), var(--primary));
+      }
+
+      .btn-primary:hover::after {
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+      }
+
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      .service-icon {
+        transition: all 0.3s ease;
+      }
+
+      .service-card:hover .service-icon {
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      .portfolio-item {
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+
+      .portfolio-item:hover .portfolio-overlay {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .portfolio-overlay {
+        opacity: 0;
+        transform: translateY(100%);
+        transition: all 0.3s ease;
+      }
+
+      .testimonial-slide {
+        transition: all 0.5s ease;
+      }
+
+      .nav-link {
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background: linear-gradient(45deg, var(--secondary), var(--primary));
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .counter {
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(45deg, var(--secondary), var(--primary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .toggle-checkbox:checked {
+        right: 0;
+        background-color: var(--primary);
+      }
+
+      .toggle-checkbox:checked + .toggle-label {
+        background-color: var(--secondary);
+      }
+
+      .input-field {
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .input-field:focus {
+        box-shadow: 0 0 0 2px var(--primary);
+      }
+
+      .input-field.error {
+        box-shadow: 0 0 0 2px #ef4444;
+      }
+
+      .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.7);
+        transform: scale(0);
+        animation: ripple 0.6s linear;
+        pointer-events: none;
+      }
+
+      @keyframes ripple {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+
+      .quote-slide {
+        transition: all 0.5s ease;
+      }
+    </style>
+  </head>
+  <body
+    class="dark"
+    x-data="{ 
+    darkMode: true, 
+    mobileMenuOpen: false,
+    currentQuote: 0,
+    modalOpen: false,
+    currentProject: null,
+    projects: [
+        {
+            title: 'Plataforma E-commerce',
+            description: 'Solución completa de comercio electrónico con integración de pagos, gestión de inventario y análisis de datos en tiempo real.',
+            technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+            image: 'https://via.placeholder.com/800x500?text=E-commerce+Platform'
+        },
+        {
+            title: 'App de Salud',
+            description: 'Aplicación móvil para seguimiento de salud con integración de wearables, recordatorios de medicamentos y telemedicina.',
+            technologies: ['Flutter', 'Firebase', 'AWS'],
+            image: 'https://via.placeholder.com/800x500?text=Health+App'
+        },
+        {
+            title: 'Sistema ERP',
+            description: 'Sistema de planificación de recursos empresariales para medianas empresas con módulos personalizados.',
+            technologies: ['Angular', 'Java', 'PostgreSQL'],
+            image: 'https://via.placeholder.com/800x500?text=ERP+System'
+        }
+    ]
+}"
+    x-init="
+    setInterval(() => {
+        currentQuote = (currentQuote + 1) % 3;
+    }, 5000);
+"
+  >
+    <!-- Navbar -->
+    <nav
+      class="fixed w-full z-50 bg-opacity-90 backdrop-blur-md bg-gray-900 shadow-lg transition-all duration-300"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+          <div class="flex-shrink-0 flex items-center">
+            <span class="text-2xl font-bold gradient-text"
+              >Code<span class="text-white">Craft</span></span
+            >
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-8">
+              <a
+                href="#home"
+                class="nav-link text-white px-3 py-2 text-sm font-medium"
+                >Inicio</a
+              >
+              <a
+                href="#about"
+                class="nav-link text-white px-3 py-2 text-sm font-medium"
+                >Nosotros</a
+              >
+              <a
+                href="#services"
+                class="nav-link text-white px-3 py-2 text-sm font-medium"
+                >Servicios</a
+              >
+              <a
+                href="#experience"
+                class="nav-link text-white px-3 py-2 text-sm font-medium"
+                >Experiencia</a
+              >
+              <a
+                href="#portfolio"
+                class="nav-link text-white px-3 py-2 text-sm font-medium"
+                >Portafolio</a
+              >
+              <a
+                href="#contact"
+                class="nav-link text-white px-3 py-2 text-sm font-medium"
+                >Contacto</a
+              >
+            </div>
+          </div>
+          <div class="flex items-center">
+            <div
+              class="relative inline-block w-10 mr-2 align-middle select-none"
+            >
+              <input
+                type="checkbox"
+                name="toggle"
+                id="toggle"
+                class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
+                x-model="darkMode"
+                @click="$dispatch('theme-change')"
+              />
+              <label
+                for="toggle"
+                class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"
+              ></label>
+            </div>
+            <a
+              href="#contact"
+              class="btn-primary text-white px-6 py-2 rounded-full text-sm font-medium relative overflow-hidden"
+            >
+              Contáctanos
+            </a>
+          </div>
+          <div class="md:hidden">
+            <button
+              @click="mobileMenuOpen = !mobileMenuOpen"
+              class="text-white focus:outline-none"
+            >
+              <svg
+                class="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div
+        x-show="mobileMenuOpen"
+        @click.away="mobileMenuOpen = false"
+        class="md:hidden bg-gray-800 transition-all duration-300"
+        x-transition
+      >
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a
+            href="#home"
+            class="block px-3 py-2 rounded-md text-base font-medium text-white"
+            >Inicio</a
+          >
+          <a
+            href="#about"
+            class="block px-3 py-2 rounded-md text-base font-medium text-white"
+            >Nosotros</a
+          >
+          <a
+            href="#services"
+            class="block px-3 py-2 rounded-md text-base font-medium text-white"
+            >Servicios</a
+          >
+          <a
+            href="#experience"
+            class="block px-3 py-2 rounded-md text-base font-medium text-white"
+            >Experiencia</a
+          >
+          <a
+            href="#portfolio"
+            class="block px-3 py-2 rounded-md text-base font-medium text-white"
+            >Portafolio</a
+          >
+          <a
+            href="#contact"
+            class="block px-3 py-2 rounded-md text-base font-medium text-white"
+            >Contacto</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="text-center md:text-left">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            <span class="gradient-text">Impulsamos</span> tu futuro digital
+          </h1>
+          <p class="text-xl text-gray-300 mb-8 max-w-lg">
+            Soluciones tecnológicas a medida para transformar tu negocio y
+            llevarlo al siguiente nivel.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+          >
+            <a
+              href="#contact"
+              class="btn-primary text-white px-8 py-4 rounded-full text-lg font-medium relative overflow-hidden"
+            >
+              Contáctanos
+            </a>
+            <a
+              href="#portfolio"
+              class="border border-purple-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-purple-900 hover:bg-opacity-30 transition-all"
+            >
+              Ver Portafolio
+            </a>
+          </div>
+          <div
+            class="mt-12 flex flex-wrap justify-center md:justify-start gap-6"
+          >
+            <div class="flex items-center">
+              <div
+                class="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center mr-3"
+              >
+                <i class="fas fa-check text-white"></i>
+              </div>
+              <span class="text-gray-300">+150 Proyectos</span>
+            </div>
+            <div class="flex items-center">
+              <div
+                class="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center mr-3"
+              >
+                <i class="fas fa-star text-white"></i>
+              </div>
+              <span class="text-gray-300">4.9 Rating</span>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <img
+            src="https://via.placeholder.com/600x400?text=Tech+Illustration"
+            alt="Tech Illustration"
+            class="w-full h-auto rounded-2xl"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="text-purple-500 font-medium">Sobre nosotros</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">
+          Quiénes <span class="gradient-text">Somos</span>
+        </h2>
+        <p class="text-gray-400 max-w-3xl mx-auto">
+          En CodeCraft combinamos experiencia técnica con creatividad para
+          construir soluciones digitales que generan impacto real en los
+          negocios.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Misión -->
+        <div class="bg-gray-800 rounded-xl p-8 card-hover">
+          <div
+            class="w-16 h-16 gradient-bg rounded-lg flex items-center justify-center mb-6 mx-auto"
+          >
+            <i class="fas fa-bullseye text-white text-2xl service-icon"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-center">Misión</h3>
+          <p class="text-gray-400 text-center">
+            Desarrollar software de calidad que resuelva problemas reales,
+            impulsando la transformación digital de nuestros clientes con
+            soluciones innovadoras y escalables.
+          </p>
+        </div>
+
+        <!-- Visión -->
+        <div class="bg-gray-800 rounded-xl p-8 card-hover">
+          <div
+            class="w-16 h-16 gradient-bg rounded-lg flex items-center justify-center mb-6 mx-auto"
+          >
+            <i class="fas fa-eye text-white text-2xl service-icon"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-center">Visión</h3>
+          <p class="text-gray-400 text-center">
+            Ser reconocidos como líderes en desarrollo de software, destacando
+            por nuestra excelencia técnica, compromiso con los resultados y
+            enfoque centrado en el usuario.
+          </p>
+        </div>
+
+        <!-- Valores -->
+        <div class="bg-gray-800 rounded-xl p-8 card-hover">
+          <div
+            class="w-16 h-16 gradient-bg rounded-lg flex items-center justify-center mb-6 mx-auto"
+          >
+            <i class="fas fa-heart text-white text-2xl service-icon"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-center">Valores</h3>
+          <p class="text-gray-400 text-center">
+            <span class="block mb-1">- Innovación constante</span>
+            <span class="block mb-1">- Calidad sin compromisos</span>
+            <span class="block mb-1">- Transparencia y honestidad</span>
+            <span class="block">- Pasión por la tecnología</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section
+      id="services"
+      class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gray-800 bg-opacity-50 rounded-3xl"
+    >
+      <div class="text-center mb-16">
+        <span class="text-purple-500 font-medium">Lo que ofrecemos</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">
+          Nuestros <span class="gradient-text">Servicios</span>
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Soluciones tecnológicas personalizadas para cada etapa de tu proyecto
+          digital.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Desarrollo Web -->
+        <div class="service-card bg-gray-800 rounded-xl p-8 card-hover">
+          <div
+            class="w-16 h-16 gradient-bg rounded-lg flex items-center justify-center mb-6 mx-auto"
+          >
+            <i class="fas fa-globe text-white text-2xl service-icon"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-center">Desarrollo Web</h3>
+          <p class="text-gray-400 text-center">
+            Creación de sitios web y aplicaciones web a medida, optimizados para
+            rendimiento, seguridad y experiencia de usuario.
+          </p>
+          <div class="mt-6 text-center">
+            <a
+              href="#"
+              class="text-purple-500 hover:text-purple-400 font-medium flex items-center justify-center"
+            >
+              Saber más <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Apps Móviles -->
+        <div class="service-card bg-gray-800 rounded-xl p-8 card-hover">
+          <div
+            class="w-16 h-16 gradient-bg rounded-lg flex items-center justify-center mb-6 mx-auto"
+          >
+            <i class="fas fa-mobile-alt text-white text-2xl service-icon"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-center">Apps Móviles</h3>
+          <p class="text-gray-400 text-center">
+            Desarrollo de aplicaciones nativas e híbridas para iOS y Android,
+            con diseños intuitivos y funcionalidades avanzadas.
+          </p>
+          <div class="mt-6 text-center">
+            <a
+              href="#"
+              class="text-purple-500 hover:text-purple-400 font-medium flex items-center justify-center"
+            >
+              Saber más <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Consultoría Técnica -->
+        <div class="service-card bg-gray-800 rounded-xl p-8 card-hover">
+          <div
+            class="w-16 h-16 gradient-bg rounded-lg flex items-center justify-center mb-6 mx-auto"
+          >
+            <i
+              class="fas fa-chalkboard-teacher text-white text-2xl service-icon"
+            ></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-center">
+            Consultoría Técnica
+          </h3>
+          <p class="text-gray-400 text-center">
+            Asesoramiento experto para optimizar tus procesos tecnológicos y
+            maximizar el ROI de tus inversiones digitales.
+          </p>
+          <div class="mt-6 text-center">
+            <a
+              href="#"
+              class="text-purple-500 hover:text-purple-400 font-medium flex items-center justify-center"
+            >
+              Saber más <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- UX/UI Design -->
+        <div class="service-card bg-gray-800 rounded-xl p-8 card-hover">
+          <div
+            class="w-16 h-16 gradient-bg rounded-lg flex items-center justify-center mb-6 mx-auto"
+          >
+            <i class="fas fa-paint-brush text-white text-2xl service-icon"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-center">UX/UI Design</h3>
+          <p class="text-gray-400 text-center">
+            Diseño de interfaces centradas en el usuario, con prototipado,
+            testing y mejora continua de la experiencia.
+          </p>
+          <div class="mt-6 text-center">
+            <a
+              href="#"
+              class="text-purple-500 hover:text-purple-400 font-medium flex items-center justify-center"
+            >
+              Saber más <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Mantenimiento -->
+        <div class="service-card bg-gray-800 rounded-xl p-8 card-hover">
+          <div
+            class="w-16 h-16 gradient-bg rounded-lg flex items-center justify-center mb-6 mx-auto"
+          >
+            <i class="fas fa-cogs text-white text-2xl service-icon"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-center">Mantenimiento</h3>
+          <p class="text-gray-400 text-center">
+            Soporte continuo, actualizaciones y mejora de aplicaciones
+            existentes para garantizar su óptimo funcionamiento.
+          </p>
+          <div class="mt-6 text-center">
+            <a
+              href="#"
+              class="text-purple-500 hover:text-purple-400 font-medium flex items-center justify-center"
+            >
+              Saber más <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Transformación Digital -->
+        <div class="service-card bg-gray-800 rounded-xl p-8 card-hover">
+          <div
+            class="w-16 h-16 gradient-bg rounded-lg flex items-center justify-center mb-6 mx-auto"
+          >
+            <i class="fas fa-robot text-white text-2xl service-icon"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-center">
+            Transformación Digital
+          </h3>
+          <p class="text-gray-400 text-center">
+            Guiamos a tu empresa en la adopción de tecnologías disruptivas para
+            mantenerse competitivo en el mercado digital.
+          </p>
+          <div class="mt-6 text-center">
+            <a
+              href="#"
+              class="text-purple-500 hover:text-purple-400 font-medium flex items-center justify-center"
+            >
+              Saber más <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section
+      id="experience"
+      class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+    >
+      <div class="text-center mb-16">
+        <span class="text-purple-500 font-medium">Nuestra experiencia</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">
+          Resultados que <span class="gradient-text">hablan por sí solos</span>
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Años de dedicación, cientos de proyectos exitosos y tecnologías de
+          vanguardia nos respaldan.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div class="bg-gray-800 rounded-xl p-8 text-center card-hover">
+          <div class="text-5xl font-bold mb-2 counter" data-target="8">0</div>
+          <h3 class="text-xl font-medium">Años de experiencia</h3>
+          <p class="text-gray-400 mt-2">
+            Desde 2015 transformando ideas en realidad
+          </p>
+        </div>
+        <div class="bg-gray-800 rounded-xl p-8 text-center card-hover">
+          <div class="text-5xl font-bold mb-2 counter" data-target="150">0</div>
+          <h3 class="text-xl font-medium">Proyectos completados</h3>
+          <p class="text-gray-400 mt-2">
+            Desde startups hasta empresas Fortune 500
+          </p>
+        </div>
+        <div class="bg-gray-800 rounded-xl p-8 text-center card-hover">
+          <div class="text-5xl font-bold mb-2 counter" data-target="40">0</div>
+          <h3 class="text-xl font-medium">Clientes satisfechos</h3>
+          <p class="text-gray-400 mt-2">En 12 países diferentes</p>
+        </div>
+      </div>
+
+      <div class="text-center mb-8">
+        <span class="text-purple-500 font-medium"
+          >Algunos de nuestros clientes</span
+        >
+      </div>
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-center"
+      >
+        <div class="flex justify-center">
+          <img
+            src="https://via.placeholder.com/150x60?text=Microsoft"
+            alt="Microsoft"
+            class="h-12 opacity-70 hover:opacity-100 transition-opacity"
+          />
+        </div>
+        <div class="flex justify-center">
+          <img
+            src="https://via.placeholder.com/150x60?text=Google"
+            alt="Google"
+            class="h-12 opacity-70 hover:opacity-100 transition-opacity"
+          />
+        </div>
+        <div class="flex justify-center">
+          <img
+            src="https://via.placeholder.com/150x60?text=Amazon"
+            alt="Amazon"
+            class="h-12 opacity-70 hover:opacity-100 transition-opacity"
+          />
+        </div>
+        <div class="flex justify-center">
+          <img
+            src="https://via.placeholder.com/150x60?text=Spotify"
+            alt="Spotify"
+            class="h-12 opacity-70 hover:opacity-100 transition-opacity"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section
+      id="portfolio"
+      class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+    >
+      <div class="text-center mb-16">
+        <span class="text-purple-500 font-medium">Nuestro trabajo</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">
+          Portafolio de <span class="gradient-text">proyectos</span>
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Una muestra de nuestro trabajo que demuestra calidad, innovación y
+          resultados.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <template x-for="(project, index) in projects" :key="index">
+          <div
+            class="portfolio-item relative rounded-xl overflow-hidden cursor-pointer"
+            @click="currentProject = project; modalOpen = true"
+          >
+            <img
+              :src="project.image"
+              :alt="project.title"
+              class="w-full h-64 object-cover"
+            />
+            <div
+              class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent p-6 flex flex-col justify-end"
+            >
+              <h3
+                class="text-xl font-bold text-white mb-2"
+                x-text="project.title"
+              ></h3>
+              <div class="flex flex-wrap gap-2">
+                <template x-for="(tech, i) in project.technologies" :key="i">
+                  <span
+                    class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded"
+                    x-text="tech"
+                  ></span>
+                </template>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <div class="text-center mt-12">
+        <button
+          class="btn-primary text-white px-8 py-3 rounded-full text-lg font-medium relative overflow-hidden"
+        >
+          Ver más proyectos
+        </button>
+      </div>
+    </section>
+
+    <!-- Quotes Section -->
+    <section
+      class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gray-800 bg-opacity-50 rounded-3xl"
+    >
+      <div class="text-center mb-16">
+        <span class="text-purple-500 font-medium">Inspiración</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">
+          Frases <span class="gradient-text">célebres</span>
+        </h2>
+      </div>
+
+      <div class="relative h-64 overflow-hidden">
+        <!-- Quote 1 -->
+        <div
+          class="quote-slide absolute inset-0 flex items-center justify-center px-8 transition-all duration-500 ease-in-out"
+          :class="{ 'opacity-100': currentQuote === 0, 'opacity-0': currentQuote !== 0 }"
+        >
+          <div class="text-center max-w-3xl">
+            <p class="text-2xl md:text-3xl font-medium italic text-white mb-6">
+              "Talk is cheap. Show me the code."
+            </p>
+            <p class="text-gray-400">— Linus Torvalds</p>
+          </div>
+        </div>
+
+        <!-- Quote 2 -->
+        <div
+          class="quote-slide absolute inset-0 flex items-center justify-center px-8 transition-all duration-500 ease-in-out"
+          :class="{ 'opacity-100': currentQuote === 1, 'opacity-0': currentQuote !== 1 }"
+        >
+          <div class="text-center max-w-3xl">
+            <p class="text-2xl md:text-3xl font-medium italic text-white mb-6">
+              "First, solve the problem. Then, write the code."
+            </p>
+            <p class="text-gray-400">— John Johnson</p>
+          </div>
+        </div>
+
+        <!-- Quote 3 -->
+        <div
+          class="quote-slide absolute inset-0 flex items-center justify-center px-8 transition-all duration-500 ease-in-out"
+          :class="{ 'opacity-100': currentQuote === 2, 'opacity-0': currentQuote !== 2 }"
+        >
+          <div class="text-center max-w-3xl">
+            <p class="text-2xl md:text-3xl font-medium italic text-white mb-6">
+              "Programs must be written for people to read, and only
+              incidentally for machines to execute."
+            </p>
+            <p class="text-gray-400">— Harold Abelson</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center mt-8">
+        <button
+          @click="currentQuote = 0"
+          class="w-3 h-3 rounded-full mx-1 focus:outline-none"
+          :class="currentQuote === 0 ? 'bg-purple-500' : 'bg-gray-500'"
+        ></button>
+        <button
+          @click="currentQuote = 1"
+          class="w-3 h-3 rounded-full mx-1 focus:outline-none"
+          :class="currentQuote === 1 ? 'bg-purple-500' : 'bg-gray-500'"
+        ></button>
+        <button
+          @click="currentQuote = 2"
+          class="w-3 h-3 rounded-full mx-1 focus:outline-none"
+          :class="currentQuote === 2 ? 'bg-purple-500' : 'bg-gray-500'"
+        ></button>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="bg-gray-800 rounded-3xl p-8 md:p-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div>
+            <span class="text-purple-500 font-medium">Contáctanos</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-6">
+              Hablemos sobre <span class="gradient-text">tu proyecto</span>
+            </h2>
+            <p class="text-gray-400 mb-8">
+              Estamos listos para convertir tus ideas en realidad. Completa el
+              formulario y nos pondremos en contacto contigo en menos de 24
+              horas.
+            </p>
+
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <div
+                    class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center"
+                  >
+                    <i class="fas fa-map-marker-alt text-white"></i>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h4 class="text-lg font-medium text-white">
+                    Oficina Principal
+                  </h4>
+                  <p class="text-gray-400 mt-1">
+                    Av. Tecnológico 1234, Ciudad de México
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <div
+                    class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center"
+                  >
+                    <i class="fas fa-envelope text-white"></i>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h4 class="text-lg font-medium text-white">
+                    Correo Electrónico
+                  </h4>
+                  <p class="text-gray-400 mt-1">contacto@codecraft.com</p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <div
+                    class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center"
+                  >
+                    <i class="fas fa-phone-alt text-white"></i>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h4 class="text-lg font-medium text-white">Teléfono</h4>
+                  <p class="text-gray-400 mt-1">+52 55 1234 5678</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <h4 class="text-lg font-medium text-white mb-4">Síguenos</h4>
+              <div class="flex space-x-4">
+                <a
+                  href="#"
+                  class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:gradient-bg transition-all"
+                >
+                  <i class="fab fa-facebook-f text-white"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:gradient-bg transition-all"
+                >
+                  <i class="fab fa-twitter text-white"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:gradient-bg transition-all"
+                >
+                  <i class="fab fa-linkedin-in text-white"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:gradient-bg transition-all"
+                >
+                  <i class="fab fa-instagram text-white"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <form id="contact-form" class="space-y-6">
+              <div>
+                <label
+                  for="name"
+                  class="block text-sm font-medium text-white mb-1"
+                  >Nombre completo</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="input-field w-full px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none"
+                  placeholder="Ingresa tu nombre"
+                  required
+                />
+                <p class="text-red-500 text-sm mt-1 hidden" id="name-error">
+                  Por favor ingresa tu nombre
+                </p>
+              </div>
+
+              <div>
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-white mb-1"
+                  >Correo electrónico</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="input-field w-full px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none"
+                  placeholder="Ingresa tu correo"
+                  required
+                />
+                <p class="text-red-500 text-sm mt-1 hidden" id="email-error">
+                  Por favor ingresa un correo válido
+                </p>
+              </div>
+
+              <div>
+                <label
+                  for="company"
+                  class="block text-sm font-medium text-white mb-1"
+                  >Empresa (opcional)</label
+                >
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  class="input-field w-full px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none"
+                  placeholder="Ingresa tu empresa"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="message"
+                  class="block text-sm font-medium text-white mb-1"
+                  >Mensaje</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  class="input-field w-full px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none"
+                  placeholder="Cuéntanos sobre tu proyecto"
+                  required
+                ></textarea>
+                <p class="text-red-500 text-sm mt-1 hidden" id="message-error">
+                  Por favor ingresa un mensaje
+                </p>
+              </div>
+
+              <div>
+                <button
+                  type="submit"
+                  class="btn-primary w-full text-white px-6 py-4 rounded-lg text-lg font-medium relative overflow-hidden"
+                >
+                  Enviar mensaje
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-20">
+      <div class="rounded-2xl overflow-hidden h-96">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.88861497903!2d-99.1716826845936!3d19.427020746202446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff35f5bd1563%3A0x6c366f0e2de02ff7!2sEl%20%C3%81ngel%20de%20la%20Independencia!5e0!3m2!1ses-419!2smx!4v1622672436892!5m2!1ses-419!2smx"
+          width="100%"
+          height="100%"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 pt-16 pb-8 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          <div>
+            <span class="text-2xl font-bold gradient-text"
+              >Code<span class="text-white">Craft</span></span
+            >
+            <p class="text-gray-400 mt-4">
+              Transformando ideas en soluciones digitales desde 2015.
+              Innovación, calidad y resultados.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-4">Navegación</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#home"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Inicio</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Nosotros</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Servicios</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#portfolio"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Portafolio</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Contacto</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-4">Contacto</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt text-purple-500 mt-1 mr-3"></i>
+                <span class="text-gray-400">Av. Tecnológico 1234, CDMX</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-envelope text-purple-500 mt-1 mr-3"></i>
+                <span class="text-gray-400">contacto@codecraft.com</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-phone-alt text-purple-500 mt-1 mr-3"></i>
+                <span class="text-gray-400">+52 55 1234 5678</span>
+              </li>
+            </ul>
+            <div class="flex space-x-4 mt-6">
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:gradient-bg transition-all"
+              >
+                <i class="fab fa-facebook-f text-white"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:gradient-bg transition-all"
+              >
+                <i class="fab fa-twitter text-white"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:gradient-bg transition-all"
+              >
+                <i class="fab fa-linkedin-in text-white"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:gradient-bg transition-all"
+              >
+                <i class="fab fa-instagram text-white"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-400 text-sm mb-4 md:mb-0">
+            &copy; 2023 CodeCraft. Todos los derechos reservados.
+          </p>
+          <div class="flex space-x-6">
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white text-sm transition-colors"
+              >Política de privacidad</a
+            >
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white text-sm transition-colors"
+              >Términos de servicio</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div
+      x-show="modalOpen"
+      @click.away="modalOpen = false"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 transition-opacity duration-300"
+      x-transition
+    >
+      <div
+        class="bg-gray-800 rounded-xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto"
+        @click.stop
+      >
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-6">
+            <h3
+              class="text-2xl font-bold text-white"
+              x-text="currentProject?.title"
+            ></h3>
+            <button
+              @click="modalOpen = false"
+              class="text-gray-400 hover:text-white"
+            >
+              <i class="fas fa-times text-xl"></i>
+            </button>
+          </div>
+
+          <img
+            :src="currentProject?.image"
+            :alt="currentProject?.title"
+            class="w-full h-64 object-cover rounded-lg mb-6"
+          />
+
+          <p
+            class="text-gray-300 mb-6"
+            x-text="currentProject?.description"
+          ></p>
+
+          <div class="mb-6">
+            <h4 class="text-lg font-semibold text-white mb-3">
+              Tecnologías utilizadas
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              <template
+                x-for="(tech, i) in currentProject?.technologies"
+                :key="i"
+              >
+                <span
+                  class="text-sm bg-purple-600 bg-opacity-70 text-white px-3 py-1 rounded"
+                  x-text="tech"
+                ></span>
+              </template>
+            </div>
+          </div>
+
+          <div class="flex justify-end">
+            <a
+              href="#"
+              class="btn-primary text-white px-6 py-2 rounded-lg font-medium"
+            >
+              Visitar proyecto <i class="fas fa-external-link-alt ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Theme change event
+      document.addEventListener("theme-change", function () {
+        if (document.documentElement.classList.contains("dark")) {
+          document.documentElement.classList.remove("dark");
+          document.documentElement.classList.add("light");
+        } else {
+          document.documentElement.classList.remove("light");
+          document.documentElement.classList.add("dark");
+        }
+      });
+
+      // Animated counters
+      function animateCounters() {
+        const counters = document.querySelectorAll(".counter");
+        const speed = 200;
+
+        counters.forEach((counter) => {
+          const target = +counter.getAttribute("data-target");
+          const count = +counter.innerText;
+          const increment = target / speed;
+
+          if (count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(animateCounters, 1);
+          } else {
+            counter.innerText = target;
+          }
+        });
+      }
+
+      // Form validation
+      const contactForm = document.getElementById("contact-form");
+
+      contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        let isValid = true;
+
+        // Validate name
+        const name = document.getElementById("name");
+        const nameError = document.getElementById("name-error");
+        if (name.value.trim() === "") {
+          name.classList.add("error");
+          nameError.classList.remove("hidden");
+          isValid = false;
+        } else {
+          name.classList.remove("error");
+          nameError.classList.add("hidden");
+        }
+
+        // Validate email
+        const email = document.getElementById("email");
+        const emailError = document.getElementById("email-error");
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email.value)) {
+          email.classList.add("error");
+          emailError.classList.remove("hidden");
+          isValid = false;
+        } else {
+          email.classList.remove("error");
+          emailError.classList.add("hidden");
+        }
+
+        // Validate message
+        const message = document.getElementById("message");
+        const messageError = document.getElementById("message-error");
+        if (message.value.trim() === "") {
+          message.classList.add("error");
+          messageError.classList.remove("hidden");
+          isValid = false;
+        } else {
+          message.classList.remove("error");
+          messageError.classList.add("hidden");
+        }
+
+        if (isValid) {
+          // Simulate form submission
+          alert(
+            "Gracias por tu mensaje. Nos pondremos en contacto contigo pronto."
+          );
+          contactForm.reset();
+        }
+      });
+
+      // Real-time validation
+      document.getElementById("name").addEventListener("input", function () {
+        if (this.value.trim() !== "") {
+          this.classList.remove("error");
+          document.getElementById("name-error").classList.add("hidden");
+        }
+      });
+
+      document.getElementById("email").addEventListener("input", function () {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailRegex.test(this.value)) {
+          this.classList.remove("error");
+          document.getElementById("email-error").classList.add("hidden");
+        }
+      });
+
+      document.getElementById("message").addEventListener("input", function () {
+        if (this.value.trim() !== "") {
+          this.classList.remove("error");
+          document.getElementById("message-error").classList.add("hidden");
+        }
+      });
+
+      // Ripple effect for buttons
+      function createRipple(event) {
+        const button = event.currentTarget;
+        const circle = document.createElement("span");
+        const diameter = Math.max(button.clientWidth, button.clientHeight);
+        const radius = diameter / 2;
+
+        circle.style.width = circle.style.height = `${diameter}px`;
+        circle.style.left = `${
+          event.clientX - button.getBoundingClientRect().left - radius
+        }px`;
+        circle.style.top = `${
+          event.clientY - button.getBoundingClientRect().top - radius
+        }px`;
+        circle.classList.add("ripple");
+
+        const ripple = button.getElementsByClassName("ripple")[0];
+        if (ripple) {
+          ripple.remove();
+        }
+
+        button.appendChild(circle);
+      }
+
+      const buttons = document.querySelectorAll(".btn-primary");
+      buttons.forEach((button) => {
+        button.addEventListener("click", createRipple);
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector("nav");
+        if (window.scrollY > 50) {
+          navbar.classList.add("shadow-xl");
+          navbar.classList.add("bg-gray-900");
+        } else {
+          navbar.classList.remove("shadow-xl");
+          navbar.classList.remove("bg-gray-900");
+        }
+      });
+
+      // Initialize ScrollReveal
+      document.addEventListener("DOMContentLoaded", function () {
+        ScrollReveal().reveal(".gradient-text", {
+          duration: 1000,
+          delay: 200,
+          opacity: 0,
+          easing: "cubic-bezier(0.5, 0, 0, 1)",
+          distance: "20px",
+        });
+
+        ScrollReveal().reveal("h1, h2, h3, h4, h5, h6", {
+          duration: 1000,
+          delay: 200,
+          opacity: 0,
+          easing: "cubic-bezier(0.5, 0, 0, 1)",
+          distance: "20px",
+        });
+
+        ScrollReveal().reveal("p, .btn-primary", {
+          duration: 1000,
+          delay: 300,
+          opacity: 0,
+          easing: "cubic-bezier(0.5, 0, 0, 1)",
+          distance: "20px",
+        });
+
+        ScrollReveal().reveal(".service-card, .portfolio-item", {
+          duration: 1000,
+          delay: 200,
+          opacity: 0,
+          easing: "cubic-bezier(0.5, 0, 0, 1)",
+          distance: "20px",
+          interval: 100,
+        });
+
+        ScrollReveal().reveal(".counter", {
+          duration: 2000,
+          delay: 200,
+          opacity: 0,
+          easing: "cubic-bezier(0.5, 0, 0, 1)",
+          distance: "20px",
+          beforeReveal: function (el) {
+            animateCounters();
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

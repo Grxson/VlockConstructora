@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vlock Constructora - Expertos en construcción en México</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E63946",
+              secundary: "#2ECC71",
+              dark: "#1A1A1A",
+              darkSecondary: "#2D2D2D",
+            },
+            fontFamily: {
+              sans: ["Montserrat", "sans-serif"],
+            },
+            animation: {
+              "fade-in": "fadeIn 1s ease-in-out",
+              "slide-up": "slideUp 0.8s ease-out",
+            },
+            keyframes: {
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              slideUp: {
+                "0%": { transform: "translateY(20px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .gallery-image {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .gallery-image:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      .modal-overlay {
+        background-color: rgba(0, 0, 0, 0.9);
+      }
+      .modal-image {
+        max-height: 80vh;
+        max-width: 90vw;
+      }
+      .dark .project-card {
+        background: linear-gradient(145deg, #374151 0%, #111827 100%);
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body
+    class="font-sans bg-white text-gray-800 dark:bg-dark dark:text-gray-200 transition-colors duration-300"
+  >
+    <!-- Header -->
+    <header
+      class="fixed w-full z-50 bg-white/90 dark:bg-dark/90 backdrop-blur-md shadow-sm"
+    >
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <div class="flex items-center">
+          <a href="/index.html">
+            <h1 class="text-2xl font-bold">
+              Vlock <span class="text-primary">Constructora</span>
+            </h1>
+          </a>
+        </div>
+
+        <div class="flex items-center space-x-4">
+          <button
+            id="darkModeToggle"
+            class="dark-mode-toggle w-10 h-10 rounded-full bg-gray-200 dark:bg-darkSecondary flex items-center justify-center"
+          >
+            <i class="fas fa-moon text-gray-700 dark:text-yellow-300"></i>
+          </button>
+
+          <button class="md:hidden text-2xl" id="mobileMenuButton"></button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Project Details Section -->
+    <section class="container mx-auto px-4 py-12 pt-24">
+      <a
+        href="/index.html#portafolio"
+        class="inline-flex items-center mb-4 px-4 py-2 bg-primary text-white rounded-lg hover:bg-red-700 transition"
+      >
+        <i class="fas fa-arrow-left mr-2"></i>
+        Regresar
+      </a>
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Project Info -->
+        <div class="lg:w-2/3">
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden project-card"
+          >
+            <div class="relative h-64 md:h-80 overflow-hidden">
+              <img
+                src="/assets/projectImages/nextipark/1.webp"
+                alt="Proyecto residencial"
+                class="w-full h-full object-cover"
+              />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4"
+              >
+                <h2 class="text-3xl font-bold text-white">NEXTIPARK</h2>
+                <p class="text-gray-300">Zapopan, Jalisco</p>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-6">
+                <div>
+                  <span
+                    class="inline-block bg-secundary/10 dark:bg-secundary/20 text-secundary dark:text-secundary-light px-3 py-1 rounded-full text-sm font-medium"
+                  >
+                    Terminado
+                  </span>
+                </div>
+                <div class="text-right">
+                  <p class="text-gray-500 dark:text-gray-400 text-sm">
+                    Fecha de entrega
+                  </p>
+                  <p class="font-semibold">15 Diciembre 2024</p>
+                </div>
+              </div>
+
+              <h3 class="text-xl font-bold mb-4">Descripción del Proyecto</h3>
+              <p class="text-gray-700 dark:text-gray-300 mb-6">
+                Este proyecto
+                <strong
+                  >"PRELIMINARES PARA CONSTRUCCIÓN DE NAVES
+                  INDUSTRIALES"</strong
+                >
+                consiste en la ejecución de actividades iniciales necesarias
+                para preparar el terreno y establecer las condiciones óptimas
+                para la construcción de una o varias navaes industriales. stas
+                labores preliminares incluyen el trazo y nivelación del terreno,
+                limpieza del sitio, desmontes, excavaciones, rellenos,
+                adecuación de accesos temporales, instalación de servicios
+                provisionales (agua, electricidad y sanitarios), así como la
+                colocación de señalización y medidas de seguridad.
+              </p>
+
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                  <p class="text-gray-500 dark:text-gray-400 text-sm">
+                    Área total
+                  </p>
+                  <p class="font-semibold">12,500 m²</p>
+                </div>
+              </div>
+
+              <h3 class="text-xl font-bold mb-4">
+                Características principales
+              </h3>
+              <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6">
+                <li class="flex items-center">
+                  <i class="fas fa-check-circle text-primary mr-2"></i>
+                  <span>Limpieza del terreno</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check-circle text-primary mr-2"></i>
+                  <span>Trazo y nivelación</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check-circle text-primary mr-2"></i>
+                  <span>Desmonte y despalme</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check-circle text-primary mr-2"></i>
+                  <span>Excavación y relleno</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check-circle text-primary mr-2"></i>
+                  <span>Accesos provisionales</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check-circle text-primary mr-2"></i>
+                  <span>Servicios temporales</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check-circle text-primary mr-2"></i>
+                  <span>Sanitarios provisionales</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check-circle text-primary mr-2"></i>
+                  <span>Señalización de seguridad</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check-circle text-primary mr-2"></i>
+                  <span>Control de acceso</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check-circle text-primary mr-2"></i>
+                  <span>Delimitación del área</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery and Team -->
+        <div class="lg:w-1/3 space-y-8">
+          <!-- Gallery -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden"
+          >
+            <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+              <h3 class="text-xl font-bold">Galería del Proyecto</h3>
+            </div>
+            <div class="p-4">
+              <div class="grid grid-cols-2 gap-3" id="gallery-grid">
+                <div
+                  class="gallery-image cursor-pointer"
+                  onclick="openModal('/assets/projectImages/nextipark/1.webp')"
+                >
+                  <img
+                    src="/assets/projectImages/nextipark/1.webp"
+                    alt="Vista exterior"
+                    class="w-full h-32 object-cover rounded-lg"
+                  />
+                </div>
+                <div
+                  class="gallery-image cursor-pointer"
+                  onclick="openModal('/assets/projectImages/nextipark/2.webp')"
+                >
+                  <img
+                    src="/assets/projectImages/nextipark/2.webp"
+                    alt="Sala de muestra"
+                    class="w-full h-32 object-cover rounded-lg"
+                  />
+                </div>
+                <div
+                  class="gallery-image cursor-pointer"
+                  onclick="openModal('/assets/projectImages/nextipark/3.webp')"
+                >
+                  <img
+                    src="/assets/projectImages/nextipark/3.webp"
+                    alt="Cocina de muestra"
+                    class="w-full h-32 object-cover rounded-lg"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden"
+          >
+            <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+              <h3 class="text-xl font-bold">
+                ¿Interesado en este tipo de proyecto?
+              </h3>
+            </div>
+            <div class="p-4">
+              <p class="mb-4 text-gray-700 dark:text-gray-300">
+                Contáctanos para más información sobre disponibilidad, precios y
+                planes de financiamiento.
+              </p>
+              <a
+                href="https://wa.me/+5213312908259"
+                class="w-full bg-primary hover:bg-primary-dark text-white py-2 px-4 rounded-lg transition-colors flex items-center justify-center"
+              >
+                <i class="fab fa-whatsapp mr-2"></i> Contactar ahora
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Navegación entre proyectos -->
+    <div class="container mx-auto px-4 mb-12">
+      <div class="flex justify-between items-center">
+        <!-- Botón Proyecto Anterior -->
+        <a
+          href="/pages/about/project6.html"
+          class="flex flex-col items-center group"
+        >
+          <div
+            class="w-12 h-12 md:w-auto md:h-auto md:px-4 md:py-2 bg-primary text-white rounded-full md:rounded-lg flex items-center justify-center hover:bg-red-700 transition"
+          >
+            <i class="fas fa-arrow-left text-lg md:mr-2"></i>
+            <span class="hidden md:inline">Proyecto Anterior</span>
+          </div>
+          <span class="mt-2 text-sm text-gray-700 dark:text-gray-300 md:hidden"
+            >Anterior</span
+          >
+        </a>
+
+        <!-- Botón Siguiente Proyecto -->
+        <a
+          href="/pages/about/project2.html"
+          class="flex flex-col items-center group"
+        >
+          <div
+            class="w-12 h-12 md:w-auto md:h-auto md:px-4 md:py-2 bg-primary text-white rounded-full md:rounded-lg flex items-center justify-center hover:bg-red-700 transition"
+          >
+            <span class="hidden md:inline">Siguiente Proyecto</span>
+            <i class="fas fa-arrow-right text-lg md:ml-2"></i>
+          </div>
+          <span class="mt-2 text-sm text-gray-700 dark:text-gray-300 md:hidden"
+            >Siguiente</span
+          >
+        </a>
+      </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div
+      id="image-modal"
+      class="fixed inset-0 z-50 flex items-center justify-center modal-overlay hidden"
+    >
+      <div class="relative">
+        <img id="modal-image" src="" alt="" class="modal-image rounded-lg" />
+        <button
+          onclick="closeModal()"
+          class="absolute top-4 right-4 text-white text-3xl hover:text-primary"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="absolute bottom-4 left-0 right-0 flex justify-center">
+          <button
+            class="bg-white/30 hover:bg-white/50 text-white rounded-full w-10 h-10 flex items-center justify-center mr-2"
+          >
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button
+            class="bg-white/30 hover:bg-white/50 text-white rounded-full w-10 h-10 flex items-center justify-center"
+          >
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center mb-4">
+              <h3 class="text-xl font-bold text-white">
+                Vlock<span class="text-primary"> Constructora</span>
+              </h3>
+            </div>
+            <p class="mb-4">
+              Líderes en construcción de calidad en México desde 2016.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-bold text-white mb-4">Enlaces rápidos</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#inicio" class="hover:text-primary transition"
+                  >Inicio</a
+                >
+              </li>
+              <li>
+                <a href="#nosotros" class="hover:text-primary transition"
+                  >Nosotros</a
+                >
+              </li>
+              <li>
+                <a href="#portafolio" class="hover:text-primary transition"
+                  >Portafolio</a
+                >
+              </li>
+              <li>
+                <a href="#servicios" class="hover:text-primary transition"
+                  >Servicios</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-bold text-white mb-4">Servicios</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="hover:text-primary transition"
+                  >Construcción residencial</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition"
+                  >Construcción comercial</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition"
+                  >Construcción industrial</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition">Obra civil</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition"
+                  >Remodelaciones</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p>© 2025 Vlock Constructora. Todos los derechos reservados.</p>
+          <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" class="hover:text-primary transition"
+              >Política de privacidad</a
+            >
+            <a href="#" class="hover:text-primary transition"
+              >Términos y condiciones</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp button -->
+    <a
+      href="https://wa.me/+5213312908259"
+      target="_blank"
+      class="fixed bottom-6 right-6 whatsapp-btn w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center text-2xl shadow-lg z-50 animate-float"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="/scripts/script.js"></script>
+    <script src="/scripts/aboutproject.js"></script>
+  </body>
+</html>

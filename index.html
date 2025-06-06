@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vlock Constructora - Expertos en construcción en México</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E63946",
+              dark: "#1A1A1A",
+              darkSecondary: "#2D2D2D",
+            },
+            fontFamily: {
+              sans: ["Montserrat", "sans-serif"],
+            },
+            animation: {
+              "fade-in": "fadeIn 1s ease-in-out",
+              "slide-up": "slideUp 0.8s ease-out",
+            },
+            keyframes: {
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              slideUp: {
+                "0%": { transform: "translateY(20px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .hero-slide {
+        transition: opacity 1s ease-in-out;
+      }
+      .service-tab {
+        transition: all 0.3s ease;
+      }
+      .portfolio-card:hover .portfolio-overlay {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .portfolio-overlay {
+        transition: all 0.3s ease;
+        transform: translateY(20px);
+      }
+      .dark-mode-toggle {
+        transition: all 0.3s ease;
+      }
+      .whatsapp-btn:hover {
+        transform: scale(1.1);
+      }
+      .whatsapp-btn {
+        transition: all 0.3s ease;
+      }
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body
+    class="font-sans bg-white text-gray-800 dark:bg-dark dark:text-gray-200 transition-colors duration-300"
+  >
+    <!-- Header -->
+    <header
+      class="fixed w-full z-50 bg-white/90 dark:bg-dark/90 backdrop-blur-md shadow-sm"
+    >
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <div class="flex items-center">
+          <!-- <div
+            class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-3"
+          >
+            <i class="fas fa-building text-white text-xl"></i>
+          </div> -->
+          <h1 class="text-2xl font-bold">
+            Vlock <span class="text-primary">Constructora</span>
+          </h1>
+        </div>
+
+        <nav class="hidden md:flex space-x-8">
+          <a href="#inicio" class="hover:text-primary transition">Inicio</a>
+          <a href="#nosotros" class="hover:text-primary transition">Nosotros</a>
+          <a href="#portafolio" class="hover:text-primary transition"
+            >Portafolio</a
+          >
+          <a href="#servicios" class="hover:text-primary transition"
+            >Servicios</a
+          >
+        </nav>
+
+        <div class="flex items-center space-x-4">
+          <button
+            id="darkModeToggle"
+            class="dark-mode-toggle w-10 h-10 rounded-full bg-gray-200 dark:bg-darkSecondary flex items-center justify-center"
+          >
+            <i class="fas fa-moon text-gray-700 dark:text-yellow-300"></i>
+          </button>
+
+          <button class="md:hidden text-2xl" id="mobileMenuButton">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden bg-white dark:bg-darkSecondary py-4 px-4 shadow-lg"
+      >
+        <div class="flex flex-col space-y-4">
+          <a href="#inicio" class="hover:text-primary transition">Inicio</a>
+          <a href="#nosotros" class="hover:text-primary transition">Nosotros</a>
+          <a href="#portafolio" class="hover:text-primary transition"
+            >Portafolio</a
+          >
+          <a href="#servicios" class="hover:text-primary transition"
+            >Servicios</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      id="inicio"
+      class="pt-24 pb-16 md:pt-32 md:pb-24 relative overflow-hidden"
+    >
+      <div class="hero-slideshow relative h-[80vh] max-h-[800px]">
+        <!-- Slide 1 -->
+        <div class="hero-slide absolute inset-0 bg-gray-900 opacity-100">
+          <img
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            alt="Edificio moderno"
+            class="w-full h-full object-cover opacity-70"
+          />
+          <div
+            class="absolute inset-0 flex items-center justify-center text-center px-4"
+          >
+            <div class="max-w-4xl mx-auto animate-fade-in">
+              <h2
+                class="text-4xl md:text-6xl font-bold text-white mb-6 animate-slide-up"
+              >
+                Construyendo el futuro de México
+              </h2>
+              <p class="text-xl md:text-2xl text-white mb-8 animate-slide-up">
+                Soluciones integrales en construcción con calidad y compromiso
+              </p>
+              <!-- <a
+                href="#contacto"
+                class="bg-primary hover:bg-red-600 text-white px-8 py-3 rounded-full text-lg font-medium transition animate-slide-up"
+                >Contáctanos</a
+              > -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="hero-slide absolute inset-0 bg-gray-900 opacity-0">
+          <img
+            src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            alt="Obra en construcción"
+            class="w-full h-full object-cover opacity-70"
+          />
+          <div
+            class="absolute inset-0 flex items-center justify-center text-center px-4"
+          >
+            <div class="max-w-4xl mx-auto">
+              <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                Innovación en cada proyecto
+              </h2>
+              <p class="text-xl md:text-2xl text-white mb-8">
+                Tecnología y experiencia al servicio de tus ideas
+              </p>
+              <a
+                href="#portafolio"
+                class="bg-primary hover:bg-red-600 text-white px-8 py-3 rounded-full text-lg font-medium transition"
+                >Ver proyectos</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="hero-slide absolute inset-0 bg-gray-900 opacity-0">
+          <img
+            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            alt="Interior de vivienda"
+            class="w-full h-full object-cover opacity-70"
+          />
+          <div
+            class="absolute inset-0 flex items-center justify-center text-center px-4"
+          >
+            <div class="max-w-4xl mx-auto">
+              <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                Diseño y funcionalidad
+              </h2>
+              <p class="text-xl md:text-2xl text-white mb-8">
+                Creando espacios que inspiran y perduran
+              </p>
+              <a
+                href="#servicios"
+                class="bg-primary hover:bg-red-600 text-white px-8 py-3 rounded-full text-lg font-medium transition"
+                >Nuestros servicios</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide indicators -->
+        <div
+          class="absolute bottom-8 left-0 right-0 flex justify-center space-x-2"
+        >
+          <button
+            class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition slide-indicator"
+            data-slide="0"
+          ></button>
+          <button
+            class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition slide-indicator"
+            data-slide="1"
+          ></button>
+          <button
+            class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition slide-indicator"
+            data-slide="2"
+          ></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiénes somos -->
+    <section
+      id="nosotros"
+      class="py-16 md:py-24 bg-gray-50 dark:bg-darkSecondary"
+    >
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+          ¿Quiénes <span class="text-primary">somos?</span>
+        </h2>
+
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <!-- Image collage -->
+          <div class="w-full md:w-1/2 grid grid-cols-2 gap-4">
+            <div class="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                alt="Equipo de construcción"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="./assets/Aeropuerto.jpg"
+                alt="Maquinaria pesada"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="col-span-2 rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="./assets/Aeropuerto.jpg"
+                alt="Reunión de equipo"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          <!-- Text content -->
+          <div class="w-full md:w-1/2">
+            <h3 class="text-2xl font-semibold mb-4">
+              Una empresa consolidada desde el 2016
+            </h3>
+            <p class="mb-4">
+              En <strong>Vlock Constructora </strong>nos especializamos en
+              ofrecer soluciones integrales de construcción, combinando
+              innovación, calidad y compromiso en cada proyecto.
+            </p>
+            <p class="mb-6">
+              Nuestro equipo de profesionales altamente capacitados trabaja con
+              los más altos estándares de calidad y seguridad, garantizando
+              resultados excepcionales que superan las expectativas de nuestros
+              clientes.
+            </p>
+
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div
+                  class="bg-primary/10 dark:bg-primary/20 p-2 rounded-full mr-4"
+                >
+                  <i class="fas fa-check-circle text-primary text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium">Compromiso con la calidad</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">
+                    Materiales de primera y procesos rigurosos
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div
+                  class="bg-primary/10 dark:bg-primary/20 p-2 rounded-full mr-4"
+                >
+                  <i class="fas fa-clock text-primary text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium">Entregas puntuales</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">
+                    Cumplimos con los plazos establecidos
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div
+                  class="bg-primary/10 dark:bg-primary/20 p-2 rounded-full mr-4"
+                >
+                  <i class="fas fa-headset text-primary text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium">Atención personalizada</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">
+                    Asesoría profesional durante todo el proceso
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección destacada -->
+    <section class="py-16 md:py-24 bg-primary/10 dark:bg-primary/5">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <div class="w-full md:w-1/2">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+              TENEMOS MÁS DE
+              <span class="text-primary">10 AÑOS DE EXPERIENCIA</span>
+              CONSTRUYENDO EN MÉXICO
+            </h2>
+            <p class="text-lg mb-6">
+              <strong>Vlock Constructora </strong> ofrece soluciones innovadoras
+              y de alta calidad en el sector de la construcción. Con un equipo
+              experto y comprometido, garantizamos un servicio integral,
+              personalizado y orientado a la excelencia. Nuestro objetivo es
+              superar expectativas con responsabilidad, honestidad y trabajo en
+              equipo.
+            </p>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-white dark:bg-darkSecondary p-4 rounded-lg shadow">
+                <h3 class="text-2xl font-bold text-primary mb-2">150+</h3>
+                <p class="text-sm">Proyectos completados</p>
+              </div>
+              <div class="bg-white dark:bg-darkSecondary p-4 rounded-lg shadow">
+                <h3 class="text-2xl font-bold text-primary mb-2">25+</h3>
+                <p class="text-sm">Ciudades atendidas</p>
+              </div>
+              <div class="bg-white dark:bg-darkSecondary p-4 rounded-lg shadow">
+                <h3 class="text-2xl font-bold text-primary mb-2">50+</h3>
+                <p class="text-sm">Profesionales</p>
+              </div>
+              <div class="bg-white dark:bg-darkSecondary p-4 rounded-lg shadow">
+                <h3 class="text-2xl font-bold text-primary mb-2">100%</h3>
+                <p class="text-sm">Clientes satisfechos</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-full md:w-1/2 relative">
+            <img
+              src="./assets/country.svg"
+              alt="Mapa de México"
+              class="w-full rounded-lg shadow-xl"
+            />
+            <div
+              class="absolute -bottom-4 -right-4 bg-white dark:bg-darkSecondary p-4 rounded-lg shadow-lg"
+            >
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-primary rounded-full mr-2"></div>
+                <p>Presencia nacional</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portafolio -->
+    <section id="portafolio" class="py-16 md:py-24 bg-white dark:bg-dark">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Nuestro <span class="text-primary">Portafolio</span>
+          </h2>
+          <p class="max-w-2xl mx-auto ">
+            Descubre algunos de nuestros proyectos más destacados en diferentes
+            sectores de la construcción.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Project 1 -->
+          <div
+            class="portfolio-card relative rounded-lg overflow-hidden shadow-lg group"
+          >
+            <img
+              src="/assets/projectImages/nextipark/1.webp"
+              alt="Nextipark"
+              class="w-full h-64 object-cover"
+            />
+            <div
+              class="portfolio-overlay absolute inset-0 bg-primary/90 opacity-0 flex flex-col justify-center items-center p-6 text-white"
+            >
+              <h3 class="text-xl font-bold mb-2 text-center">NEXTIPARK</h3>
+              <p class="text-sm mb-4 text-center">PRELIMINARES PARA CONSTRUCCIÓN DE NAVES INDUSTRIALES</p>
+              <button
+                onclick="location.href='/pages/about/nextipark.html'"
+                class="bg-white text-primary px-4 py-2 rounded-full text-sm font-medium view-project"
+                data-project="1"
+              >
+                Ver detalles
+              </button>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div
+            class="portfolio-card relative rounded-lg overflow-hidden shadow-lg group"
+          >
+            <img
+              src="/assets/projectImages/torreDepartamentos/1.webp"
+              alt="Torre de Departamentos"
+              class="w-full h-64 object-cover"
+            />
+            <div
+              class="portfolio-overlay absolute inset-0 bg-primary/90 opacity-0 flex flex-col justify-center items-center p-6 text-white"
+            >
+              <h3 class="text-xl font-bold mb-2 text-center">TORRE DE DEPARTAMENTOS COUNTRY CLUB</h3>
+              <p class="text-sm mb-4 text-center">
+                MUROS INTERIORES Y DE ELEVADOR,
+              </p>
+              <button
+                class="bg-white text-primary px-4 py-2 rounded-full text-sm font-medium view-project"
+                data-project="2"
+              >
+                Ver detalles
+              </button>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div
+            class="portfolio-card relative rounded-lg overflow-hidden shadow-lg group"
+          >
+            <img
+              src="/assets/projectImages/pulsoPark/1.webp"
+              alt="Pulso Park El Salto"
+              class="w-full h-64 object-cover"
+            />
+            <div
+              class="portfolio-overlay absolute inset-0 bg-primary/90 opacity-0 flex flex-col justify-center items-center p-6 text-white"
+            >
+              <h3 class="text-xl font-bold mb-2 text-center">PULSO PARK EL SALTO</h3>
+              <p class="text-sm mb-4 text-center">
+                BARDA PERIMETRAL
+              </p>
+              <button
+                class="bg-white text-primary px-4 py-2 rounded-full text-sm font-medium view-project"
+                data-project="3"
+              >
+                Ver detalles
+              </button>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div
+            class="portfolio-card relative rounded-lg overflow-hidden shadow-lg group"
+          >
+            <img
+              src="/assets/projectImages/hersheys/1.webp"
+              alt="HERSHEY'S"
+              class="w-full h-64 object-cover"
+            />
+            <div
+              class="portfolio-overlay absolute inset-0 bg-primary/90 opacity-0 flex flex-col justify-center items-center p-6 text-white"
+            >
+              <h3 class="text-xl font-bold mb-2 text-center">HERSHEY'S</h3>
+              <p class="text-sm mb-4 text-center">
+                MUROS PERIMETRALES E INTERIORES EN LA AMPLIACIÓN DE PASTAS.
+              </p>
+              <button
+                class="bg-white text-primary px-4 py-2 rounded-full text-sm font-medium view-project"
+                data-project="4"
+              >
+                Ver detalles
+              </button>
+            </div>
+          </div>
+
+          <!-- Project 5 -->
+          <div
+            class="portfolio-card relative rounded-lg overflow-hidden shadow-lg group"
+          >
+            <img
+              src="/assets/projectImages/aeropuerto/1.webp"
+              alt="AEROPUERTO DE GUADALAJARA"
+              class="w-full h-64 object-cover"
+            />
+            <div
+              class="portfolio-overlay absolute inset-0 bg-primary/90 opacity-0 flex flex-col justify-center items-center p-6 text-white"
+            >
+              <h3 class="text-xl font-bold mb-2 text-center">AEROPUERTO DE GUADALAJARA</h3>
+              <p class="text-sm mb-4 text-center">REMODELACIÓN DE SALAS DE ESPERA,</p>
+              <button
+                class="bg-white text-primary px-4 py-2 rounded-full text-sm font-medium view-project"
+                data-project="5"
+              >
+                Ver detalles
+              </button>
+            </div>
+          </div>
+
+          <!-- Project 6 -->
+          <div
+            class="portfolio-card relative rounded-lg overflow-hidden shadow-lg group"
+          >
+            <img
+              src="/assets/projectImages/altosur/1.webp"
+              alt="FRACCIONAMIENTO ALTOSUR"
+              class="w-full h-64 object-cover"
+            />
+            <div
+              class="portfolio-overlay absolute inset-0 bg-primary/90 opacity-0 flex flex-col justify-center items-center p-6 text-white"
+            >
+              <h3 class="text-xl font-bold mb-2 text-center">FRACCIONAMIENTO ALTOSUR</h3>
+              <p class="text-sm mb-4 text-center">TORRE DE DEPARTAMENTOS</p>
+              <button
+                class="bg-white text-primary px-4 py-2 rounded-full text-sm font-medium view-project"
+                data-project="6"
+              >
+                Ver detalles
+              </button>
+            </div>
+          </div>
+          <!-- Project 7 -->
+          
+        </div>
+
+        <div class="text-center mt-12">
+          <div class="text-center mt-12">
+  <a href="/proyectos" 
+     class="inline-block bg-red-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md 
+            hover:bg-red-700 transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    Ver más proyectos
+  </a>
+</div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section
+      id="servicios"
+      class="py-16 md:py-24 bg-gray-50 dark:bg-darkSecondary"
+    >
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Nuestros <span class="text-primary">Servicios</span>
+          </h2>
+          <p class="max-w-2xl mx-auto">
+            Ofrecemos soluciones integrales para cada etapa de tu proyecto de
+            construcción.
+          </p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+          <!-- Service tabs -->
+          <div class="w-full lg:w-1/3 space-y-2">
+            <button
+              class="service-tab w-full text-left p-4 rounded-lg bg-white dark:bg-dark shadow hover:bg-primary/10 dark:hover:bg-primary/20 active-service"
+              data-service="1"
+            >
+              <div class="flex items-center">
+                <div
+                  class="w-10 h-10 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center mr-4"
+                >
+                  <i class="fas fa-road text-primary"></i>
+                </div>
+                <h3 class="font-bold">Obra Civil</h3>
+              </div>
+            </button>
+
+            <button
+              class="service-tab w-full text-left p-4 rounded-lg bg-white dark:bg-dark shadow hover:bg-primary/10 dark:hover:bg-primary/20"
+              data-service="2"
+            >
+              <div class="flex items-center">
+                <div
+                  class="w-10 h-10 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center mr-4"
+                >
+                  <i class="fas fa-th-large text-primary"></i>
+                </div>
+                <h3 class="font-bold">Pisos de Concreto</h3>
+              </div>
+            </button>
+
+            <button
+              class="service-tab w-full text-left p-4 rounded-lg bg-white dark:bg-dark shadow hover:bg-primary/10 dark:hover:bg-primary/20"
+              data-service="3"
+            >
+              <div class="flex items-center">
+                <div
+                  class="w-10 h-10 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center mr-4"
+                >
+                  <i class="fas fa-industry text-primary"></i>
+                </div>
+                <h3 class="font-bold">Obra Industrial</h3>
+              </div>
+            </button>
+
+            <button
+              class="service-tab w-full text-left p-4 rounded-lg bg-white dark:bg-dark shadow hover:bg-primary/10 dark:hover:bg-primary/20"
+              data-service="4"
+            >
+              <div class="flex items-center">
+                <div
+                  class="w-10 h-10 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center mr-4"
+                >
+                  <i class="fas fa-city text-primary"></i>
+                </div>
+                <h3 class="font-bold">Desarrollos Habitacionales</h3>
+              </div>
+            </button>
+
+            <button
+              class="service-tab w-full text-left p-4 rounded-lg bg-white dark:bg-dark shadow hover:bg-primary/10 dark:hover:bg-primary/20"
+              data-service="5"
+            >
+              <div class="flex items-center">
+                <div
+                  class="w-10 h-10 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center mr-4"
+                >
+                  <i class="fas fa-building text-primary"></i>
+                </div>
+                <h3 class="font-bold">Edificaciones Comerciales</h3>
+              </div>
+            </button>
+          </div>
+
+          <!-- Service content -->
+          <div class="w-full lg:w-2/3">
+            <div
+              class="service-content bg-white dark:bg-dark shadow-lg rounded-lg p-8 h-full"
+            >
+            <div class="service-detail hidden" data-service="1">
+              <h3 class="text-2xl font-bold mb-4">Obra Civil</h3>
+              <p class="mb-6">
+                Realizamos proyectos de obra civil de gran escala con enfoque en calidad, seguridad y cumplimiento de normativas.
+              </p>
+            
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="flex items-start">
+                  <div class="bg-primary/10 dark:bg-primary/20 p-2 rounded-full mr-4">
+                    <i class="fas fa-check text-primary"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium">Infraestructura vial</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                      Caminos, banquetas y obras urbanas de alto rendimiento.
+                    </p>
+                  </div>
+                </div>
+            
+                <div class="flex items-start">
+                  <div class="bg-primary/10 dark:bg-primary/20 p-2 rounded-full mr-4">
+                    <i class="fas fa-check text-primary"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium">Obras hidráulicas</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                      Redes de drenaje y abastecimiento de agua potable.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-detail hidden" data-service="2">
+              <h3 class="text-2xl font-bold mb-4">Pisos de Concreto</h3>
+              <p class="mb-6">
+                Expertos en la instalación de pisos industriales, comerciales y residenciales con acabados resistentes y duraderos.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="flex items-start">
+                  <div class="bg-primary/10 dark:bg-primary/20 p-2 rounded-full mr-4"><i class="fas fa-check text-primary"></i></div>
+                  <div>
+                    <h4 class="font-medium">Pisos pulidos</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Alta resistencia para uso industrial.</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="bg-primary/10 dark:bg-primary/20 p-2 rounded-full mr-4"><i class="fas fa-check text-primary"></i></div>
+                  <div>
+                    <h4 class="font-medium">Acabados decorativos</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Opciones estéticas para hogares y comercios.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+             <!-- Service 3 -->
+             <div class="service-detail hidden" data-service="3">
+              <h3 class="text-2xl font-bold mb-4">Obra Industrial</h3>
+              <p class="mb-6">
+                Construimos naves industriales, almacenes y plantas de producción con enfoque en funcionalidad, seguridad y eficiencia.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="flex items-start">
+                  <div class="bg-primary/10 dark:bg-primary/20 p-2 rounded-full mr-4"><i class="fas fa-check text-primary"></i></div>
+                  <div>
+                    <h4 class="font-medium">Naves industriales</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Diseño y construcción a la medida.</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="bg-primary/10 dark:bg-primary/20 p-2 rounded-full mr-4"><i class="fas fa-check text-primary"></i></div>
+                  <div>
+                    <h4 class="font-medium">Infraestructura especializada</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Soluciones para procesos productivos complejos.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+              <!-- Service 4 -->
+              <div class="service-detail hidden" data-service="4">
+                <h3 class="text-2xl font-bold mb-4">Desarrollos Habitacionales</h3>
+                <p class="mb-6">
+                  Planeación y ejecución de fraccionamientos, conjuntos habitacionales y condominios con enfoque en comunidad y funcionalidad.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  <div class="flex items-start">
+                    <div class="bg-primary/10 dark:bg-primary/20 p-2 rounded-full mr-4"><i class="fas fa-check text-primary"></i></div>
+                    <div>
+                      <h4 class="font-medium">Fraccionamientos residenciales</h4>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">Diseñados para calidad de vida y seguridad.</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="bg-primary/10 dark:bg-primary/20 p-2 rounded-full mr-4"><i class="fas fa-check text-primary"></i></div>
+                    <div>
+                      <h4 class="font-medium">Condominios verticales</h4>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">Eficiencia en espacios urbanos.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+               <!-- Service 5 -->
+               <div class="service-detail hidden" data-service="5">
+                <h3 class="text-2xl font-bold mb-4">Edificaciones Comerciales</h3>
+                <p class="mb-6">
+                  Diseñamos y construimos espacios comerciales atractivos, funcionales y adaptados a las necesidades del cliente y usuario final.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  <div class="flex items-start">
+                    <div class="bg-primary/10 dark:bg-primary/20 p-2 rounded-full mr-4"><i class="fas fa-check text-primary"></i></div>
+                    <div>
+                      <h4 class="font-medium">Locales y plazas</h4>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">Espacios modernos y bien ubicados.</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="bg-primary/10 dark:bg-primary/20 p-2 rounded-full mr-4"><i class="fas fa-check text-primary"></i></div>
+                    <div>
+                      <h4 class="font-medium">Oficinas y coworking</h4>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">Ambientes profesionales y cómodos.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center mb-4">
+              <!-- <div
+                class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-3"
+              >
+                <i class="fas fa-building text-white"></i>
+              </div> -->
+              <h3 class="text-xl font-bold text-white">
+                Vlock<span class="text-primary"> Constructora</span>
+              </h3>
+            </div>
+            <p class="mb-4">
+              Líderes en construcción de calidad en México desde 2016.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-bold text-white mb-4">Enlaces rápidos</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#inicio" class="hover:text-primary transition"
+                  >Inicio</a
+                >
+              </li>
+              <li>
+                <a href="#nosotros" class="hover:text-primary transition"
+                  >Nosotros</a
+                >
+              </li>
+              <li>
+                <a href="#portafolio" class="hover:text-primary transition"
+                  >Portafolio</a
+                >
+              </li>
+              <li>
+                <a href="#servicios" class="hover:text-primary transition"
+                  >Servicios</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-bold text-white mb-4">Servicios</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="hover:text-primary transition"
+                  >Construcción residencial</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition"
+                  >Construcción comercial</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition"
+                  >Construcción industrial</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition">Obra civil</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition"
+                  >Remodelaciones</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p>© 2025 Vlock Constructora. Todos los derechos reservados.</p>
+          <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" class="hover:text-primary transition"
+              >Política de privacidad</a
+            >
+            <a href="#" class="hover:text-primary transition"
+              >Términos y condiciones</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp button -->
+    <a
+      href="https://wa.me/+5213312908259"
+      target="_blank"
+      class="fixed bottom-6 right-6 whatsapp-btn w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center text-2xl shadow-lg z-50 animate-float"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Project Modal -->
+    <div
+      id="projectModal"
+      class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 hidden"
+    >
+      <div
+        class="bg-white dark:bg-darkSecondary rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+      >
+        <div class="relative">
+          <button
+            id="closeModal"
+            class="absolute top-4 right-4 bg-white dark:bg-darkSecondary rounded-full w-10 h-10 flex items-center justify-center shadow-lg z-10"
+          >
+            <i class="fas fa-times text-xl"></i>
+          </button>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="lg:sticky lg:top-0">
+              <!-- Project images carousel -->
+              <!-- Carrusel SOLO visible en pantallas pequeñas -->
+<div class="relative w-full lg:hidden overflow-hidden">
+  <div id="mobileCarousel" class="flex transition-transform duration-500">
+    
+  </div>
+
+  <!-- Botones para el carrusel -->
+  <!-- <button id="mobilePrev" class="absolute top-1/2 left-2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">
+    ‹
+  </button>
+  <button id="mobileNext" class="absolute top-1/2 right-2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">
+    ›
+  </button> -->
+</div>
+
+<!-- Galería ESTÁTICA visible solo en pantallas grandes -->
+<div class="hidden lg:block">
+
+</div>
+
+<!-- Script para el carrusel en móvil -->
+<script src="/scripts/carruselMobile.js">
+</script>
+
+            </div>
+
+            <div class="p-6">
+              <h3 id="modalProjectTitle" class="text-2xl font-bold mb-2">
+                Torres Altamira
+              </h3>
+              <p id="modalProjectLocation" class="text-primary mb-4">CDMX</p>
+
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span
+                  class="bg-gray-100 dark:bg-dark px-3 py-1 rounded-full text-sm"
+                  >Residencial</span
+                >
+                <span
+                  class="bg-gray-100 dark:bg-dark px-3 py-1 rounded-full text-sm"
+                  >Lujo</span
+                >
+                <span
+                  class="bg-gray-100 dark:bg-dark px-3 py-1 rounded-full text-sm"
+                  >2022</span
+                >
+              </div>
+
+              <p id="modalProjectDescription" class="mb-6">
+                Conjunto residencial de lujo ubicado en una de las zonas más
+                exclusivas de la Ciudad de México. El proyecto consta de 3
+                torres de 20 pisos cada una, con departamentos desde 80 m² hasta
+                300 m², todos con acabados de primera calidad y amenidades
+                exclusivas.
+              </p>
+
+              <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="bg-gray-50 dark:bg-dark p-4 rounded-lg">
+                  <p class="text-sm text-gray-500 dark:text-gray-400">
+                    Área construida
+                  </p>
+                  <p class="font-bold">45,000 m²</p>
+                </div>
+                <div class="bg-gray-50 dark:bg-dark p-4 rounded-lg">
+                  <p class="text-sm text-gray-500 dark:text-gray-400">
+                    Duración
+                  </p>
+                  <p class="font-bold">24 meses</p>
+                </div>
+                <div class="bg-gray-50 dark:bg-dark p-4 rounded-lg">
+                  <p class="text-sm text-gray-500 dark:text-gray-400">
+                    Inversión
+                  </p>
+                  <p class="font-bold">$250M MXN</p>
+                </div>
+                <div class="bg-gray-50 dark:bg-dark p-4 rounded-lg">
+                  <p class="text-sm text-gray-500 dark:text-gray-400">
+                    Unidades
+                  </p>
+                  <p class="font-bold">180</p>
+                </div>
+              </div>
+
+              <h4 class="font-bold mb-3">Amenidades</h4>
+              <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6">
+                <li class="flex items-center">
+                  <i class="fas fa-check text-primary mr-2"></i>
+                  <span>Alberca semiolímpica</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check text-primary mr-2"></i>
+                  <span>Gimnasio equipado</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check text-primary mr-2"></i>
+                  <span>Áreas verdes</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check text-primary mr-2"></i>
+                  <span>Salón de eventos</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check text-primary mr-2"></i>
+                  <span>Estacionamiento subterráneo</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-check text-primary mr-2"></i>
+                  <span>Sistema de seguridad 24/7</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/scripts/script.js"></script>
+    <script src="/scripts/data/projects.js">
+      // Your custom JavaScript code can go here
+    </script>
+  </body>
+</html>

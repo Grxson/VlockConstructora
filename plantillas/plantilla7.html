@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="es-MX" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Construcciones Mexicanas | Expertos en Obra Civil</title>
+    <meta
+      name="description"
+      content="Empresa mexicana líder en construcción con más de 8 años de experiencia en proyectos de alta calidad en todo el país."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+      :root {
+        --primary: #c70000;
+        --primary-dark: #a00000;
+        --secondary: #ffffff;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        transition: background-color 0.3s ease;
+        overflow-x: hidden;
+      }
+
+      .dark {
+        --primary: #ff3333;
+        --primary-dark: #e60000;
+        --secondary: #1a1a1a;
+        background-color: #121212;
+        color: #f0f0f0;
+      }
+
+      .dark .bg-white {
+        background-color: #1e1e1e !important;
+        color: #f0f0f0;
+      }
+
+      .dark .text-gray-800 {
+        color: #f0f0f0 !important;
+      }
+
+      .dark .bg-gray-100 {
+        background-color: #2d2d2d !important;
+      }
+
+      .loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--secondary);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+      }
+
+      .loader.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .crane {
+        width: 100px;
+        height: 100px;
+        position: relative;
+        margin-bottom: 20px;
+      }
+
+      .crane-base {
+        width: 60px;
+        height: 10px;
+        background-color: var(--primary);
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+      }
+
+      .crane-tower {
+        width: 8px;
+        height: 60px;
+        background-color: #555;
+        position: absolute;
+        bottom: 10px;
+        left: 46px;
+      }
+
+      .crane-arm {
+        width: 60px;
+        height: 6px;
+        background-color: #555;
+        position: absolute;
+        top: 20px;
+        left: 46px;
+        transform-origin: left center;
+        animation: lift 2s infinite ease-in-out;
+      }
+
+      .crane-cable {
+        width: 2px;
+        height: 30px;
+        background-color: #777;
+        position: absolute;
+        top: 26px;
+        left: 100px;
+        animation: cable 2s infinite ease-in-out;
+      }
+
+      .crane-hook {
+        width: 12px;
+        height: 6px;
+        background-color: var(--primary);
+        position: absolute;
+        top: 56px;
+        left: 94px;
+        border-radius: 3px;
+      }
+
+      .logo-loading {
+        position: absolute;
+        top: 60px;
+        left: 94px;
+        width: 30px;
+        height: 30px;
+        background-color: var(--primary);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+        border-radius: 50%;
+        animation: liftLogo 2s infinite ease-in-out;
+      }
+
+      @keyframes lift {
+        0%,
+        100% {
+          transform: rotate(-10deg);
+        }
+        50% {
+          transform: rotate(10deg);
+        }
+      }
+
+      @keyframes cable {
+        0%,
+        100% {
+          height: 30px;
+        }
+        50% {
+          height: 50px;
+        }
+      }
+
+      @keyframes liftLogo {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(20px);
+        }
+      }
+
+      .hero-slide {
+        transition: transform 0.5s ease, opacity 0.5s ease;
+      }
+
+      .service-detail {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      .service-detail.hidden {
+        transform: translateX(20px);
+        opacity: 0;
+        position: absolute;
+      }
+
+      .service-detail.active {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      .project-modal {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      .project-modal.hidden {
+        opacity: 0;
+        transform: scale(0.9);
+        pointer-events: none;
+      }
+
+      .whatsapp-btn {
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .dark .card-hover:hover {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-link {
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .map-container {
+        position: relative;
+      }
+
+      .map-outline {
+        fill: none;
+        stroke: var(--primary);
+        stroke-width: 2;
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: draw 3s forwards;
+      }
+
+      @keyframes draw {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      .parallax {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      @media (max-width: 768px) {
+        .parallax {
+          background-attachment: scroll;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-800">
+    <!-- Loader -->
+    <div class="loader">
+      <div class="crane">
+        <div class="crane-base"></div>
+        <div class="crane-tower"></div>
+        <div class="crane-arm"></div>
+        <div class="crane-cable"></div>
+        <div class="crane-hook"></div>
+        <div class="logo-loading">CM</div>
+      </div>
+      <p class="mt-4 text-lg font-semibold">Construyendo su experiencia...</p>
+    </div>
+
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-50 bg-white shadow-sm dark:bg-gray-900 transition-colors duration-300"
+    >
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <div class="flex items-center">
+          <a href="#" class="text-2xl font-bold flex items-center">
+            <span class="bg-red-600 text-white px-2 py-1 rounded mr-2">CM</span>
+            <span class="hidden sm:inline">Construcciones Mexicanas</span>
+          </a>
+        </div>
+
+        <nav class="hidden md:flex space-x-8">
+          <a href="#home" class="nav-link">Inicio</a>
+          <a href="#about" class="nav-link">Quiénes Somos</a>
+          <a href="#experience" class="nav-link">Experiencia</a>
+          <a href="#portfolio" class="nav-link">Portafolio</a>
+          <a href="#services" class="nav-link">Servicios</a>
+        </nav>
+
+        <div class="flex items-center space-x-4">
+          <button
+            id="theme-toggle"
+            class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          >
+            <i class="fas fa-moon dark:hidden"></i>
+            <i class="fas fa-sun hidden dark:block text-yellow-300"></i>
+          </button>
+
+          <button class="md:hidden p-2" id="mobile-menu-button">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div
+        class="md:hidden hidden bg-white dark:bg-gray-900 py-2 px-4 shadow-md"
+        id="mobile-menu"
+      >
+        <a
+          href="#home"
+          class="block py-2 border-b border-gray-200 dark:border-gray-700"
+          >Inicio</a
+        >
+        <a
+          href="#about"
+          class="block py-2 border-b border-gray-200 dark:border-gray-700"
+          >Quiénes Somos</a
+        >
+        <a
+          href="#experience"
+          class="block py-2 border-b border-gray-200 dark:border-gray-700"
+          >Experiencia</a
+        >
+        <a
+          href="#portfolio"
+          class="block py-2 border-b border-gray-200 dark:border-gray-700"
+          >Portafolio</a
+        >
+        <a href="#services" class="block py-2">Servicios</a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative overflow-hidden">
+      <div class="hero-slider relative h-screen">
+        <!-- Slide 1 -->
+        <div class="hero-slide absolute inset-0 flex items-center bg-gray-100">
+          <div class="absolute inset-0 bg-black opacity-40"></div>
+          <div
+            class="bg-cover bg-center absolute inset-0 parallax"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            "
+          ></div>
+
+          <div
+            class="container mx-auto px-4 relative z-10 text-white"
+            data-aos="fade-up"
+          >
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">
+              Construyendo el futuro de México
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl">
+              Soluciones integrales en construcción con calidad y compromiso.
+            </p>
+            <a
+              href="#contact"
+              class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold inline-block transition-colors"
+              >Contáctanos</a
+            >
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div
+          class="hero-slide absolute inset-0 flex items-center bg-gray-100 opacity-0"
+        >
+          <div class="absolute inset-0 bg-black opacity-40"></div>
+          <div
+            class="bg-cover bg-center absolute inset-0 parallax"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            "
+          ></div>
+
+          <div
+            class="container mx-auto px-4 relative z-10 text-white"
+            data-aos="fade-up"
+          >
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">
+              Innovación en cada proyecto
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl">
+              Tecnología y experiencia al servicio de tus necesidades
+              constructivas.
+            </p>
+            <a
+              href="#portfolio"
+              class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold inline-block transition-colors"
+              >Ver proyectos</a
+            >
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div
+          class="hero-slide absolute inset-0 flex items-center bg-gray-100 opacity-0"
+        >
+          <div class="absolute inset-0 bg-black opacity-40"></div>
+          <div
+            class="bg-cover bg-center absolute inset-0 parallax"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1600607688969-a5bfcd646554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            "
+          ></div>
+
+          <div
+            class="container mx-auto px-4 relative z-10 text-white"
+            data-aos="fade-up"
+          >
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">
+              Excelencia en construcción
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl">
+              Más de 8 años transformando espacios con profesionalismo.
+            </p>
+            <a
+              href="#about"
+              class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold inline-block transition-colors"
+              >Conócenos</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Slider controls -->
+      <div
+        class="absolute bottom-10 left-0 right-0 flex justify-center space-x-2 z-10"
+      >
+        <button
+          class="slider-dot w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity slider-dot-active"
+          data-slide="0"
+        ></button>
+        <button
+          class="slider-dot w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity"
+          data-slide="1"
+        ></button>
+        <button
+          class="slider-dot w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity"
+          data-slide="2"
+        ></button>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-16"
+          data-aos="fade-up"
+        >
+          Quiénes Somos
+        </h2>
+
+        <div class="flex flex-col lg:flex-row gap-12 items-center">
+          <div
+            class="lg:w-1/2 grid grid-cols-1 md:grid-cols-3 gap-4"
+            data-aos="fade-right"
+          >
+            <div
+              class="h-64 bg-cover bg-center rounded-lg"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+              "
+            ></div>
+            <div
+              class="h-64 bg-cover bg-center rounded-lg"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1622372738946-62e02505feb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80');
+              "
+            ></div>
+            <div
+              class="h-64 bg-cover bg-center rounded-lg"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1605106702734-205df224ecce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+              "
+            ></div>
+          </div>
+
+          <div class="lg:w-1/2" data-aos="fade-left">
+            <h3 class="text-2xl font-bold mb-4 text-red-600">
+              Nuestra Historia
+            </h3>
+            <p class="mb-6">
+              Fundada en 2015, Construcciones Mexicanas nació con el objetivo de
+              transformar el sector de la construcción en México mediante la
+              aplicación de tecnología innovadora y procesos eficientes, sin
+              perder de vista los valores fundamentales de honestidad y
+              compromiso.
+            </p>
+
+            <h3 class="text-2xl font-bold mb-4 text-red-600">Nuestra Visión</h3>
+            <p class="mb-6">
+              Ser reconocidos como la empresa líder en construcción en México,
+              destacando por nuestra calidad, innovación y responsabilidad
+              social, contribuyendo al desarrollo urbano sostenible del país.
+            </p>
+
+            <h3 class="text-2xl font-bold mb-4 text-red-600">
+              Nuestros Valores
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="flex items-start">
+                <div
+                  class="bg-red-100 dark:bg-red-900/30 p-2 rounded-full mr-3"
+                >
+                  <i class="fas fa-shield-alt text-red-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Integridad</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">
+                    Actuamos con honestidad y transparencia.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div
+                  class="bg-red-100 dark:bg-red-900/30 p-2 rounded-full mr-3"
+                >
+                  <i class="fas fa-medal text-red-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Calidad</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">
+                    Excelencia en cada detalle de nuestros proyectos.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div
+                  class="bg-red-100 dark:bg-red-900/30 p-2 rounded-full mr-3"
+                >
+                  <i class="fas fa-users text-red-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Compromiso</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">
+                    Con nuestros clientes, empleados y comunidad.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div
+                  class="bg-red-100 dark:bg-red-900/30 p-2 rounded-full mr-3"
+                >
+                  <i class="fas fa-lightbulb text-red-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Innovación</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">
+                    Buscamos constantemente mejorar nuestros procesos.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-100 dark:bg-gray-800">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center">
+          <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">
+              TENEMOS MÁS DE
+              <span class="text-red-600">8 AÑOS DE EXPERIENCIA</span>
+              CONSTRUYENDO EN MÉXICO
+            </h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-10">
+              <div class="text-center">
+                <div class="text-4xl font-bold text-red-600 mb-2">50+</div>
+                <div class="text-gray-600 dark:text-gray-400">
+                  Proyectos completados
+                </div>
+              </div>
+              <div class="text-center">
+                <div class="text-4xl font-bold text-red-600 mb-2">250K+</div>
+                <div class="text-gray-600 dark:text-gray-400">
+                  m² construidos
+                </div>
+              </div>
+              <div class="text-center">
+                <div class="text-4xl font-bold text-red-600 mb-2">98%</div>
+                <div class="text-gray-600 dark:text-gray-400">
+                  Clientes satisfechos
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:w-1/2 flex justify-center" data-aos="fade-left">
+            <div class="map-container w-full max-w-md">
+              <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                <!-- Simplified Mexico map outline -->
+                <path
+                  class="map-outline"
+                  d="M150,50 L180,70 L200,60 L220,80 L240,70 L260,90 L270,80 L280,100 L260,120 L250,110 L230,130 L210,120 L190,140 L170,130 L150,150 L130,140 L110,160 L90,150 L70,170 L50,160 L40,180 L60,200 L50,220 L70,240 L60,260 L80,280 L100,270 L120,290 L140,280 L160,260 L180,250 L200,230 L180,210 L160,220 L140,200 L120,190 L140,170 L160,180 L180,160 L200,150 L180,130 L160,140 L140,120 L160,100 L140,80 L150,50 Z"
+                />
+                <circle
+                  cx="180"
+                  cy="120"
+                  r="8"
+                  fill="red"
+                  class="animate-pulse"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-4"
+          data-aos="fade-up"
+        >
+          Portafolio de Proyectos
+        </h2>
+        <p
+          class="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12"
+          data-aos="fade-up"
+        >
+          Algunos de nuestros proyectos más destacados
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project 1 -->
+          <div
+            class="rounded-lg overflow-hidden shadow-lg card-hover"
+            data-aos="zoom-in"
+            data-project="1"
+          >
+            <div
+              class="h-64 bg-cover bg-center"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+              "
+            ></div>
+            <div class="p-6 bg-white dark:bg-gray-800">
+              <h3 class="text-xl font-bold mb-2">Torre Residencial Santa Fe</h3>
+              <p class="text-gray-600 dark:text-gray-400">Ciudad de México</p>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div
+            class="rounded-lg overflow-hidden shadow-lg card-hover"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+            data-project="2"
+          >
+            <div
+              class="h-64 bg-cover bg-center"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+              "
+            ></div>
+            <div class="p-6 bg-white dark:bg-gray-800">
+              <h3 class="text-xl font-bold mb-2">
+                Centro Comercial Guadalajara
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                Guadalajara, Jalisco
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div
+            class="rounded-lg overflow-hidden shadow-lg card-hover"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-project="3"
+          >
+            <div
+              class="h-64 bg-cover bg-center"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1600607688969-a5bfcd646554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+              "
+            ></div>
+            <div class="p-6 bg-white dark:bg-gray-800">
+              <h3 class="text-xl font-bold mb-2">
+                Conjunto Habitacional Monterrey
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                Monterrey, Nuevo León
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div
+            class="rounded-lg overflow-hidden shadow-lg card-hover"
+            data-aos="zoom-in"
+            data-project="4"
+          >
+            <div
+              class="h-64 bg-cover bg-center"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1600566752227-513cf697c3be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+              "
+            ></div>
+            <div class="p-6 bg-white dark:bg-gray-800">
+              <h3 class="text-xl font-bold mb-2">Plaza Corporativa Puebla</h3>
+              <p class="text-gray-600 dark:text-gray-400">Puebla, Puebla</p>
+            </div>
+          </div>
+
+          <!-- Project 5 -->
+          <div
+            class="rounded-lg overflow-hidden shadow-lg card-hover"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+            data-project="5"
+          >
+            <div
+              class="h-64 bg-cover bg-center"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80');
+              "
+            ></div>
+            <div class="p-6 bg-white dark:bg-gray-800">
+              <h3 class="text-xl font-bold mb-2">Hotel Boutique Cancún</h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                Cancún, Quintana Roo
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 6 -->
+          <div
+            class="rounded-lg overflow-hidden shadow-lg card-hover"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-project="6"
+          >
+            <div
+              class="h-64 bg-cover bg-center"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+              "
+            ></div>
+            <div class="p-6 bg-white dark:bg-gray-800">
+              <h3 class="text-xl font-bold mb-2">Escuela Primaria Oaxaca</h3>
+              <p class="text-gray-600 dark:text-gray-400">Oaxaca, Oaxaca</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="#"
+            class="inline-block border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+            >Ver todos los proyectos</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-100 dark:bg-gray-800">
+      <div class="container mx-auto px-4">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-4"
+          data-aos="fade-up"
+        >
+          Nuestros Servicios
+        </h2>
+        <p
+          class="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12"
+          data-aos="fade-up"
+        >
+          Soluciones integrales para cada etapa de tu proyecto
+        </p>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+          <div class="lg:w-1/2" data-aos="fade-right">
+            <div class="space-y-4">
+              <!-- Service 1 -->
+              <div
+                class="service-item p-6 bg-white dark:bg-gray-700 rounded-lg shadow cursor-pointer transition-all hover:bg-red-50 dark:hover:bg-gray-600"
+                data-service="1"
+              >
+                <div class="flex items-center">
+                  <div
+                    class="bg-red-100 dark:bg-red-900/30 p-3 rounded-full mr-4"
+                  >
+                    <i class="fas fa-building text-red-600"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-lg">Construcción Residencial</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      Desde casas hasta condominios de lujo
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Service 2 -->
+              <div
+                class="service-item p-6 bg-white dark:bg-gray-700 rounded-lg shadow cursor-pointer transition-all hover:bg-red-50 dark:hover:bg-gray-600"
+                data-service="2"
+              >
+                <div class="flex items-center">
+                  <div
+                    class="bg-red-100 dark:bg-red-900/30 p-3 rounded-full mr-4"
+                  >
+                    <i class="fas fa-store text-red-600"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-lg">Construcción Comercial</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      Plazas, oficinas y locales comerciales
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Service 3 -->
+              <div
+                class="service-item p-6 bg-white dark:bg-gray-700 rounded-lg shadow cursor-pointer transition-all hover:bg-red-50 dark:hover:bg-gray-600"
+                data-service="3"
+              >
+                <div class="flex items-center">
+                  <div
+                    class="bg-red-100 dark:bg-red-900/30 p-3 rounded-full mr-4"
+                  >
+                    <i class="fas fa-industry text-red-600"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-lg">Construcción Industrial</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      Naves, almacenes y plantas productivas
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Service 4 -->
+              <div
+                class="service-item p-6 bg-white dark:bg-gray-700 rounded-lg shadow cursor-pointer transition-all hover:bg-red-50 dark:hover:bg-gray-600"
+                data-service="4"
+              >
+                <div class="flex items-center">
+                  <div
+                    class="bg-red-100 dark:bg-red-900/30 p-3 rounded-full mr-4"
+                  >
+                    <i class="fas fa-road text-red-600"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-lg">Obra Civil</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      Infraestructura urbana y vialidades
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Service 5 -->
+              <div
+                class="service-item p-6 bg-white dark:bg-gray-700 rounded-lg shadow cursor-pointer transition-all hover:bg-red-50 dark:hover:bg-gray-600"
+                data-service="5"
+              >
+                <div class="flex items-center">
+                  <div
+                    class="bg-red-100 dark:bg-red-900/30 p-3 rounded-full mr-4"
+                  >
+                    <i class="fas fa-drafting-compass text-red-600"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-lg">Diseño Arquitectónico</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      Soluciones creativas y funcionales
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Service 6 -->
+              <div
+                class="service-item p-6 bg-white dark:bg-gray-700 rounded-lg shadow cursor-pointer transition-all hover:bg-red-50 dark:hover:bg-gray-600"
+                data-service="6"
+              >
+                <div class="flex items-center">
+                  <div
+                    class="bg-red-100 dark:bg-red-900/30 p-3 rounded-full mr-4"
+                  >
+                    <i class="fas fa-tools text-red-600"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-lg">Remodelaciones</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      Transformación de espacios existentes
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:w-1/2 relative" data-aos="fade-left">
+            <!-- Service Details -->
+            <div
+              class="service-detail active p-8 bg-white dark:bg-gray-700 rounded-lg shadow-lg h-full"
+              data-service-detail="1"
+            >
+              <h3 class="text-2xl font-bold mb-4 text-red-600">
+                Construcción Residencial
+              </h3>
+              <p class="mb-6">
+                Especialistas en desarrollar proyectos residenciales que
+                combinan calidad, funcionalidad y diseño. Desde viviendas
+                unifamiliares hasta complejos residenciales de alta gama.
+              </p>
+
+              <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="flex items-center">
+                  <i class="fas fa-check-circle text-red-600 mr-2"></i>
+                  <span>Casas habitación</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-check-circle text-red-600 mr-2"></i>
+                  <span>Condominios verticales</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-check-circle text-red-600 mr-2"></i>
+                  <span>Fraccionamientos</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-check-circle text-red-600 mr-2"></i>
+                  <span>Vivienda sustentable</span>
+                </div>
+              </div>
+
+              <div class="bg-gray-100 dark:bg-gray-600 p-4 rounded-lg">
+                <h4 class="font-bold mb-2">Proceso:</h4>
+                <ol class="list-decimal list-inside space-y-1">
+                  <li>Diseño arquitectónico</li>
+                  <li>Ingeniería estructural</li>
+                  <li>Construcción</li>
+                  <li>Entrega llave en mano</li>
+                </ol>
+              </div>
+            </div>
+
+            <div
+              class="service-detail hidden p-8 bg-white dark:bg-gray-700 rounded-lg shadow-lg h-full"
+              data-service-detail="2"
+            >
+              <h3 class="text-2xl font-bold mb-4 text-red-600">
+                Construcción Comercial
+              </h3>
+              <p class="mb-6">
+                Desarrollamos espacios comerciales que potencian la experiencia
+                del cliente y optimizan las operaciones de negocio, desde
+                pequeños locales hasta grandes centros comerciales.
+              </p>
+
+              <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="flex items-center">
+                  <i class="fas fa-check-circle text-red-600 mr-2"></i>
+                  <span>Centros comerciales</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-check-circle text-red-600 mr-2"></i>
+                  <span>Oficinas corporativas</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-check-circle text-red-600 mr-2"></i>
+                  <span>Hoteles y restaurantes</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-check-circle text-red-600 mr-2"></i>
+                  <span>Espacios comerciales mixtos</span>
+                </div>
+              </div>
+
+              <div class="bg-gray-100 dark:bg-gray-600 p-4 rounded-lg">
+                <h4 class="font-bold mb-2">Ventajas:</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li>Diseños orientados al flujo de clientes</li>
+                  <li>Materiales de alta durabilidad</li>
+                  <li>Cumplimiento de normativas</li>
+                  <li>Optimización de espacios</li>
+                </ul>
+              </div>
+            </div>
+
+            <div
+              class="service-detail hidden p-8 bg-white dark:bg-gray-700 rounded-lg shadow-lg h-full"
+              data-service-detail="3"
+            >
+              <h3 class="text-2xl font-bold mb-4 text-red-600">
+                Construcción Industrial
+              </h3>
+              <p class="mb-6">
+                Soluciones constructivas especializadas para el sector
+                industrial, diseñadas para maximizar la eficiencia operativa y
+                cumplir con los más altos estándares de seguridad.
+              </p>
+
+              <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="flex items-center">
+                  <i class="fas fa-check-circle text-red-600 mr-2"></i>
+                  <span>Naves industriales</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-check-circle text-red-600 mr-2"></i>
+                  <span>Almacenes logísticos</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-check-circle text-red-600 mr-2"></i>
+                  <span>Plantas de producción</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-check-circle text-red-600 mr-2"></i>
+                  <span>Parques industriales</span>
+                </div>
+              </div>
+
+              <div class="bg-gray-100 dark:bg-gray-600 p-4 rounded-lg">
+                <h4 class="font-bold mb-2">Características:</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li>Estructuras metálicas de alta resistencia</li>
+                  <li>Sistemas de ventilación especializados</li>
+                  <li>Pisos industriales de concreto</li>
+                  <li>Instalaciones eléctricas y mecánicas</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Other service details would follow the same pattern -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Modals -->
+    <!-- Modal 1 -->
+    <div
+      class="project-modal fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden"
+      data-modal="1"
+    >
+      <div
+        class="bg-white dark:bg-gray-800 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+      >
+        <div class="relative">
+          <button
+            class="absolute top-4 right-4 bg-gray-200 dark:bg-gray-700 rounded-full p-2 z-10 close-modal"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+          <div
+            class="h-64 md:h-96 bg-cover bg-center"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            "
+          ></div>
+        </div>
+
+        <div class="p-6 md:p-8">
+          <h3 class="text-2xl md:text-3xl font-bold mb-4">
+            Torre Residencial Santa Fe
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h4 class="text-xl font-semibold mb-3 text-red-600">
+                Descripción
+              </h4>
+              <p class="mb-4">
+                Torre residencial de 25 pisos en la zona exclusiva de Santa Fe,
+                con amenities de lujo y vistas panorámicas a la ciudad. Proyecto
+                desarrollado con los más altos estándares de calidad y diseño.
+              </p>
+
+              <h4 class="text-xl font-semibold mb-3 text-red-600">Retos</h4>
+              <p>
+                El terreno presentaba desafíos geotécnicos que requirieron
+                soluciones innovadoras en cimentación. Además, el proyecto debía
+                cumplir con estrictas normas de sustentabilidad.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xl font-semibold mb-3 text-red-600">
+                Detalles Técnicos
+              </h4>
+              <div class="space-y-3">
+                <div
+                  class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"
+                >
+                  <span class="font-medium">Ubicación:</span>
+                  <span>Santa Fe, CDMX</span>
+                </div>
+                <div
+                  class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"
+                >
+                  <span class="font-medium">Tipo de obra:</span>
+                  <span>Residencial vertical</span>
+                </div>
+                <div
+                  class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"
+                >
+                  <span class="font-medium">Superficie:</span>
+                  <span>18,500 m²</span>
+                </div>
+                <div
+                  class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"
+                >
+                  <span class="font-medium">Duración:</span>
+                  <span>22 meses</span>
+                </div>
+                <div
+                  class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"
+                >
+                  <span class="font-medium">Unidades:</span>
+                  <span>120 departamentos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div
+              class="h-32 bg-cover bg-center rounded-lg"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80');
+              "
+            ></div>
+            <div
+              class="h-32 bg-cover bg-center rounded-lg"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1600607688969-a5bfcd646554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+              "
+            ></div>
+            <div
+              class="h-32 bg-cover bg-center rounded-lg"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1600566752227-513cf697c3be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+              "
+            ></div>
+            <div
+              class="h-32 bg-cover bg-center rounded-lg"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+              "
+            ></div>
+          </div>
+
+          <div class="text-center">
+            <a
+              href="#"
+              class="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+              >Solicitar proyecto similar</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Other modals would follow the same pattern -->
+
+    <!-- WhatsApp Button -->
+    <a
+      href="https://wa.me/5215512345678"
+      class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-xl whatsapp-btn z-40"
+      target="_blank"
+    >
+      <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-red-700 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">Construcciones Mexicanas</h3>
+            <p class="mb-4">
+              Líderes en construcción con calidad y compromiso en México.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="hover:text-red-200 transition-colors"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="hover:text-red-200 transition-colors"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="hover:text-red-200 transition-colors"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="hover:text-red-200 transition-colors"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold mb-4">Enlaces</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#home" class="hover:text-red-200 transition-colors"
+                  >Inicio</a
+                >
+              </li>
+              <li>
+                <a href="#about" class="hover:text-red-200 transition-colors"
+                  >Quiénes Somos</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#experience"
+                  class="hover:text-red-200 transition-colors"
+                  >Experiencia</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#portfolio"
+                  class="hover:text-red-200 transition-colors"
+                  >Portafolio</a
+                >
+              </li>
+              <li>
+                <a href="#services" class="hover:text-red-200 transition-colors"
+                  >Servicios</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold mb-4">Servicios</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="hover:text-red-200 transition-colors"
+                  >Residencial</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-red-200 transition-colors"
+                  >Comercial</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-red-200 transition-colors"
+                  >Industrial</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-red-200 transition-colors"
+                  >Obra Civil</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-red-200 transition-colors"
+                  >Remodelaciones</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold mb-4">Contacto</h3>
+            <address class="not-italic">
+              <p class="mb-2">
+                <i class="fas fa-map-marker-alt mr-2"></i> Av. Insurgentes Sur
+                1234, CDMX
+              </p>
+              <p class="mb-2">
+                <i class="fas fa-phone-alt mr-2"></i> (55) 1234 5678
+              </p>
+              <p class="mb-2">
+                <i class="fas fa-envelope mr-2"></i>
+                contacto@construccionesmx.com
+              </p>
+              <p>
+                <i class="fas fa-clock mr-2"></i> Lunes a Viernes: 9am - 6pm
+              </p>
+            </address>
+          </div>
+        </div>
+
+        <div class="border-t border-red-800 mt-8 pt-8 text-center">
+          <p>
+            &copy; 2023 Construcciones Mexicanas. Todos los derechos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Loader
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          document.querySelector(".loader").classList.add("hidden");
+        }, 1500);
+      });
+
+      // Theme toggle
+      const themeToggle = document.getElementById("theme-toggle");
+      const html = document.documentElement;
+
+      // Check for saved user preference or use system preference
+      const savedTheme =
+        localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light");
+
+      if (savedTheme === "dark") {
+        html.classList.add("dark");
+      }
+
+      themeToggle.addEventListener("click", () => {
+        html.classList.toggle("dark");
+        const theme = html.classList.contains("dark") ? "dark" : "light";
+        localStorage.setItem("theme", theme);
+      });
+
+      // Mobile menu
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Hero slider
+      const heroSlides = document.querySelectorAll(".hero-slide");
+      const sliderDots = document.querySelectorAll(".slider-dot");
+      let currentSlide = 0;
+
+      function showSlide(index) {
+        heroSlides.forEach((slide, i) => {
+          slide.style.opacity = i === index ? "1" : "0";
+          slide.style.zIndex = i === index ? "1" : "0";
+        });
+
+        sliderDots.forEach((dot, i) => {
+          dot.classList.toggle("slider-dot-active", i === index);
+        });
+
+        currentSlide = index;
+      }
+
+      sliderDots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          const slideIndex = parseInt(dot.getAttribute("data-slide"));
+          showSlide(slideIndex);
+        });
+      });
+
+      // Auto slide change
+      setInterval(() => {
+        const nextSlide = (currentSlide + 1) % heroSlides.length;
+        showSlide(nextSlide);
+      }, 5000);
+
+      // Services
+      const serviceItems = document.querySelectorAll(".service-item");
+      const serviceDetails = document.querySelectorAll(".service-detail");
+
+      serviceItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          const serviceId = item.getAttribute("data-service");
+
+          // Hide all service details
+          serviceDetails.forEach((detail) => {
+            detail.classList.add("hidden");
+            detail.classList.remove("active");
+          });
+
+          // Show selected service detail
+          const selectedDetail = document.querySelector(
+            `[data-service-detail="${serviceId}"]`
+          );
+          selectedDetail.classList.remove("hidden");
+          selectedDetail.classList.add("active");
+
+          // Update active state for items
+          serviceItems.forEach((i) => {
+            i.classList.remove("bg-red-50", "dark:bg-gray-600");
+          });
+          item.classList.add("bg-red-50", "dark:bg-gray-600");
+        });
+      });
+
+      // Project modals
+      const projectCards = document.querySelectorAll("[data-project]");
+      const projectModals = document.querySelectorAll(".project-modal");
+      const closeModalButtons = document.querySelectorAll(".close-modal");
+
+      projectCards.forEach((card) => {
+        card.addEventListener("click", () => {
+          const modalId = card.getAttribute("data-project");
+          const modal = document.querySelector(`[data-modal="${modalId}"]`);
+          modal.classList.remove("hidden");
+          document.body.style.overflow = "hidden";
+        });
+      });
+
+      closeModalButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const modal = button.closest(".project-modal");
+          modal.classList.add("hidden");
+          document.body.style.overflow = "auto";
+        });
+      });
+
+      // Close modal when clicking outside
+      projectModals.forEach((modal) => {
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            modal.classList.add("hidden");
+            document.body.style.overflow = "auto";
+          }
+        });
+      });
+
+      // Initialize AOS animations
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: true,
+        offset: 100,
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+
+            // Close mobile menu if open
+            if (!mobileMenu.classList.contains("hidden")) {
+              mobileMenu.classList.add("hidden");
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

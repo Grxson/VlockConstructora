@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusTech | Consultoría de Software</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/lottie-web@latest/dist/lottie.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            --secondary: #ec4899;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #f8fafc;
+            transition: all 0.3s ease;
+        }
+        
+        .dark body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #f8fafc;
+        }
+        
+        .light body {
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            color: #1e293b;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--secondary), var(--primary), #3b82f6);
+            background-size: 200% 200%;
+            animation: gradient 10s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+        
+        .btn-primary::after {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: all 0.4s;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+        }
+        
+        .btn-primary:hover::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .service-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .portfolio-item {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .portfolio-overlay {
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-slide {
+            transition: all 0.5s ease;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader-content {
+            text-align: center;
+        }
+        
+        .counter {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .toggle-checkbox:checked {
+            right: 0;
+            background-color: var(--primary);
+        }
+        
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: var(--secondary);
+        }
+        
+        .input-field {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .input-field:focus {
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+        
+        .input-field.error {
+            box-shadow: 0 0 0 2px #ef4444;
+        }
+        
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.7);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="dark">
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-content">
+            <div id="lottie-loader" style="width: 150px; height: 150px; margin: 0 auto;"></div>
+            <h1 class="text-3xl font-bold mt-4 gradient-text">NexusTech</h1>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-opacity-90 backdrop-blur-md bg-gray-900 shadow-lg transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-bold gradient-text">Nexus<span class="text-white">Tech</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link text-white px-3 py-2 text-sm font-medium">Inicio</a>
+                        <a href="#services" class="nav-link text-white px-3 py-2 text-sm font-medium">Servicios</a>
+                        <a href="#about" class="nav-link text-white px-3 py-2 text-sm font-medium">Nosotros</a>
+                        <a href="#experience" class="nav-link text-white px-3 py-2 text-sm font-medium">Experiencia</a>
+                        <a href="#portfolio" class="nav-link text-white px-3 py-2 text-sm font-medium">Portafolio</a>
+                        <a href="#contact" class="nav-link text-white px-3 py-2 text-sm font-medium">Contacto</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative inline-block w-10 mr-2 align-middle select-none">
+                        <input type="checkbox" name="toggle" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                        <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                    <button id="cta-nav" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-medium relative overflow-hidden">
+                        Contáctanos
+                    </button>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-white">Inicio</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-white">Servicios</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-white">Nosotros</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-white">Experiencia</a>
+                <a href="#portfolio" class="block px-3 py-2 rounded-md text-base font-medium text-white">Portafolio</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-white">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="text-center md:text-left">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    Transformamos <span class="gradient-text">ideas</span> en 
+                    <span class="gradient-text">soluciones</span> digitales
+                </h1>
+                <p class="text-xl text-gray-300 mb-8 max-w-lg">
+                    Impulsamos el crecimiento de tu negocio con tecnología de vanguardia y estrategias innovadoras.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <button id="hero-cta" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-medium relative overflow-hidden">
+                        Comienza tu proyecto
+                    </button>
+                    <button class="border border-purple-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-purple-900 hover:bg-opacity-30 transition-all">
+                        <i class="fas fa-play mr-2"></i> Ver video
+                    </button>
+                </div>
+                <div class="mt-12 flex flex-wrap justify-center md:justify-start gap-6">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center mr-3">
+                            <i class="fas fa-check text-white"></i>
+                        </div>
+                        <span class="text-gray-300">+100 Clientes</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center mr-3">
+                            <i class="fas fa-star text-white"></i>
+                        </div>
+                        <span class="text-gray-300">5.0 Rating</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <div id="lottie-hero" style="width: 100%; height: 400px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="py-12 bg-gray-800 bg-opacity-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-gray-400 mb-8">Confían en nosotros</p>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-center">
+                <div class="flex justify-center">
+                    <img src="https://via.placeholder.com/150x60?text=Microsoft" alt="Microsoft" class="h-12 opacity-70 hover:opacity-100 transition-opacity">
+                </div>
+                <div class="flex justify-center">
+                    <img src="https://via.placeholder.com/150x60?text=Google" alt="Google" class="h-12 opacity-70 hover:opacity-100 transition-opacity">
+                </div>
+                <div class="flex justify-center">
+                    <img src="https://via.placeholder.com/150x60?text=Amazon" alt="Amazon" class="h-12 opacity-70 hover:opacity-100 transition-opacity">
+                </div>
+                <div class="flex justify-center">
+                    <img src="https://via.placeholder.com/150x60?text=Spotify" alt="Spotify" class="h-12 opacity-70 hover:opacity-100 transition-opacity">
+                </div>
+                <div class="flex justify-center">
+                    <img src="https://via.placeholder.com/150x60?text=Uber" alt="Uber" class="h-12 opacity-70 hover:opacity-100 transition-opacity">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-purple-500 font-medium">Lo que ofrecemos</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">Nuestros <span class="gradient-text">Servicios</span></h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Soluciones tecnológicas personalizadas para impulsar tu negocio en la era digital.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Service 1 -->
+            <div class="service-card bg-gray-800 rounded-xl p-8 card-hover">
+                <div class="w-16 h-16 gradient-bg rounded-lg flex items-center justify-center mb-6 mx-auto">
+                    <div id="lottie-web" class="service-icon" style="width: 40px; height: 40px;"></div>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-center">Desarrollo Web</h3>
+                <p class="text-gray-400 text-center">
+                    Creación de sitios web y aplicaciones web a medida, optimizados para rendimiento y experiencia de usuario.
+                </p>
+                <div class="mt-6 text-center">
+                    <a href="#" class="text-purple-500 hover:text-purple-400 font-medium flex items-center justify-center">
+                        Saber más <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Service 2 -->
+            <div class="service-card bg-gray-800 rounded-xl p-8 card-hover">
+                <div class="w-16 h-16 gradient-bg rounded-lg flex items-center justify-center mb-6 mx-auto">
+                    <div id="lottie-mobile" class="service-icon" style="width: 40px; height: 40px;"></div>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-center">Apps Móviles</h3>
+                <p class="text-gray-400 text-center">
+                    Desarrollo de aplicaciones nativas e híbridas para iOS y Android, con diseños intuitivos y funcionalidades avanzadas.
+                </p>
+                <div class="mt-6 text-center">
+                    <a href="#" class="text-purple-500 hover:text-purple-400 font-medium flex items-center justify-center">
+                        Saber más <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Service 3 -->
+            <div class="service-card bg-gray-800 rounded-xl p-8 card-hover">
+                <div class="w-16 h-16 gradient-bg rounded-lg flex items-center justify-center mb-6 mx-auto">
+                    <div id="lottie-consulting" class="service-icon" style="width: 40px; height: 40px;"></div>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-center">Consultoría Tecnológica</h3>
+                <p class="text-gray-400 text-center">
+                    Asesoramiento experto para optimizar tus procesos tecnológicos y maximizar el ROI de tus inversiones digitales.
+                </p>
+                <div class="mt-6 text-center">
+                    <a href="#" class="text-purple-500 hover:text-purple-400 font-medium flex items-center justify-center">
+                        Saber más <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Service 4 -->
+            <div class="service-card bg-gray-800 rounded-xl p-8 card-hover">
+                <div class="w-16 h-16 gradient-bg rounded-lg flex items-center justify-center mb-6 mx-auto">
+                    <div id="lottie-transform" class="service-icon" style="width: 40px; height: 40px;"></div>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-center">Transformación Digital</h3>
+                <p class="text-gray-400 text-center">
+                    Guiamos a tu empresa en la adopción de tecnologías disruptivas para mantenerse competitivo en el mercado digital.
+                </p>
+                <div class="mt-6 text-center">
+                    <a href="#" class="text-purple-500 hover:text-purple-400 font-medium flex items-center justify-center">
+                        Saber más <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gray-800 bg-opacity-50 rounded-3xl my-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="relative">
+                <div class="relative rounded-2xl overflow-hidden">
+                    <img src="https://via.placeholder.com/600x400?text=Equipo+NexusTech" alt="Equipo NexusTech" class="w-full h-auto rounded-2xl">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70 rounded-2xl"></div>
+                </div>
+                <div class="absolute -bottom-6 -left-6 bg-purple-600 p-6 rounded-2xl shadow-xl">
+                    <div class="text-white text-center">
+                        <span class="block text-3xl font-bold">10+</span>
+                        <span class="block text-sm">Años de experiencia</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <span class="text-purple-500 font-medium">Sobre nosotros</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-6">Más que una <span class="gradient-text">empresa</span>, somos un <span class="gradient-text">equipo</span></h2>
+                <p class="text-gray-400 mb-6">
+                    En NexusTech, creemos que la tecnología debe ser accesible, intuitiva y poderosa. Fundada en 2013 por un grupo de apasionados por la innovación, hemos crecido hasta convertirnos en un referente en consultoría de software.
+                </p>
+                <p class="text-gray-400 mb-8">
+                    Nuestro enfoque centrado en el cliente y nuestra metodología ágil nos permiten entregar soluciones que no solo cumplen, sino que superan las expectativas. Cada proyecto es una oportunidad para crear algo extraordinario.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="w-8 h-8 rounded-full gradient-bg flex items-center justify-center">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="text-lg font-medium text-white">Enfoque personalizado</h4>
+                            <p class="text-gray-400 mt-1">Soluciones adaptadas a tus necesidades específicas.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="w-8 h-8 rounded-full gradient-bg flex items-center justify-center">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="text-lg font-medium text-white">Equipo experto</h4>
+                            <p class="text-gray-400 mt-1">Profesionales certificados con amplia experiencia.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-primary text-white px-8 py-3 rounded-full text-lg font-medium relative overflow-hidden">
+                    Conoce nuestro equipo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-purple-500 font-medium">Nuestra trayectoria</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">Experiencia que <span class="gradient-text">inspira confianza</span></h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Años de dedicación, cientos de proyectos exitosos y tecnologías de vanguardia nos respaldan.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div class="bg-gray-800 rounded-xl p-8 text-center card-hover">
+                <div class="text-5xl font-bold mb-2 counter" data-target="250">0</div>
+                <h3 class="text-xl font-medium">Proyectos completados</h3>
+                <p class="text-gray-400 mt-2">Desde startups hasta empresas Fortune 500</p>
+            </div>
+            <div class="bg-gray-800 rounded-xl p-8 text-center card-hover">
+                <div class="text-5xl font-bold mb-2 counter" data-target="50">0</div>
+                <h3 class="text-xl font-medium">Expertos en equipo</h3>
+                <p class="text-gray-400 mt-2">Desarrolladores, diseñadores y consultores</p>
+            </div>
+            <div class="bg-gray-800 rounded-xl p-8 text-center card-hover">
+                <div class="text-5xl font-bold mb-2 counter" data-target="15">0</div>
+                <h3 class="text-xl font-medium">Tecnologías dominadas</h3>
+                <p class="text-gray-400 mt-2">Lenguajes, frameworks y plataformas</p>
+            </div>
+        </div>
+        
+        <div class="bg-gray-800 rounded-2xl p-8 md:p-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Tecnologías que dominamos</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        <div class="flex items-center bg-gray-700 bg-opacity-50 rounded-lg p-3">
+                            <img src="https://via.placeholder.com/40?text=React" alt="React" class="w-8 h-8 mr-3">
+                            <span class="font-medium">React</span>
+                        </div>
+                        <div class="flex items-center bg-gray-700 bg-opacity-50 rounded-lg p-3">
+                            <img src="https://via.placeholder.com/40?text=Node" alt="Node.js" class="w-8 h-8 mr-3">
+                            <span class="font-medium">Node.js</span>
+                        </div>
+                        <div class="flex items-center bg-gray-700 bg-opacity-50 rounded-lg p-3">
+                            <img src="https://via.placeholder.com/40?text=Python" alt="Python" class="w-8 h-8 mr-3">
+                            <span class="font-medium">Python</span>
+                        </div>
+                        <div class="flex items-center bg-gray-700 bg-opacity-50 rounded-lg p-3">
+                            <img src="https://via.placeholder.com/40?text=Flutter" alt="Flutter" class="w-8 h-8 mr-3">
+                            <span class="font-medium">Flutter</span>
+                        </div>
+                        <div class="flex items-center bg-gray-700 bg-opacity-50 rounded-lg p-3">
+                            <img src="https://via.placeholder.com/40?text=AWS" alt="AWS" class="w-8 h-8 mr-3">
+                            <span class="font-medium">AWS</span>
+                        </div>
+                        <div class="flex items-center bg-gray-700 bg-opacity-50 rounded-lg p-3">
+                            <img src="https://via.placeholder.com/40?text=AI" alt="AI" class="w-8 h-8 mr-3">
+                            <span class="font-medium">AI/ML</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div id="lottie-tech" style="width: 100%; height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gray-800 bg-opacity-50 rounded-3xl my-12">
+        <div class="text-center mb-16">
+            <span class="text-purple-500 font-medium">Testimonios</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">Lo que dicen <span class="gradient-text">nuestros clientes</span></h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                La satisfacción de nuestros clientes es nuestra mayor recompensa.
+            </p>
+        </div>
+        
+        <div class="relative">
+            <div class="testimonial-slider overflow-hidden">
+                <div class="flex transition-transform duration-500 ease-in-out" id="testimonial-slides">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-slide w-full flex-shrink-0 px-4">
+                        <div class="bg-gray-800 rounded-2xl p-8 md:p-10">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-white font-bold mr-4">JD</div>
+                                <div>
+                                    <h4 class="text-lg font-bold">Juan Díaz</h4>
+                                    <p class="text-gray-400">CEO, FinTech Solutions</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 mb-6">
+                                "NexusTech transformó por completo nuestra plataforma de pagos. Su equipo no solo entregó a tiempo, sino que superó nuestras expectativas en términos de calidad y funcionalidad. Han sido un socio estratégico clave en nuestro crecimiento."
+                            </p>
+                            <div class="flex">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-slide w-full flex-shrink-0 px-4">
+                        <div class="bg-gray-800 rounded-2xl p-8 md:p-10">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-white font-bold mr-4">MG</div>
+                                <div>
+                                    <h4 class="text-lg font-bold">María González</h4>
+                                    <p class="text-gray-400">Directora de TI, Retail Corp</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 mb-6">
+                                "La consultoría tecnológica de NexusTech nos ayudó a modernizar nuestra infraestructura obsoleta. Su enfoque metódico y su profundo conocimiento nos ahorraron miles en costos operativos. Definitivamente los recomendaría a cualquier empresa que busque innovación."
+                            </p>
+                            <div class="flex">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-slide w-full flex-shrink-0 px-4">
+                        <div class="bg-gray-800 rounded-2xl p-8 md:p-10">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-white font-bold mr-4">CP</div>
+                                <div>
+                                    <h4 class="text-lg font-bold">Carlos Pérez</h4>
+                                    <p class="text-gray-400">Fundador, HealthApp</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 mb-6">
+                                "Como startup, necesitábamos un equipo que entendiera nuestras limitaciones pero compartiera nuestra visión. NexusTech fue ese equipo. Desarrollaron nuestra app móvil con un presupuesto ajustado pero sin comprometer la calidad. ¡Increíble trabajo!"
+                            </p>
+                            <div class="flex">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star-half-alt text-yellow-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-center mt-8">
+                <button id="testimonial-prev" class="w-10 h-10 rounded-full border border-purple-500 text-purple-500 flex items-center justify-center mr-4 hover:bg-purple-500 hover:text-white transition-all">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="testimonial-next" class="w-10 h-10 rounded-full border border-purple-500 text-purple-500 flex items-center justify-center hover:bg-purple-500 hover:text-white transition-all">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-purple-500 font-medium">Nuestro trabajo</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">Portafolio de <span class="gradient-text">proyectos</span></h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Una muestra de nuestro trabajo que demuestra calidad, innovación y resultados.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Project 1 -->
+            <div class="portfolio-item relative rounded-xl overflow-hidden">
+                <img src="https://via.placeholder.com/600x400?text=E-commerce+Platform" alt="E-commerce Platform" class="w-full h-64 object-cover">
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent p-6 flex flex-col justify-end">
+                    <h3 class="text-xl font-bold text-white mb-2">E-commerce Platform</h3>
+                    <p class="text-gray-300 mb-4">Solución completa para ventas online con integración de pagos y logística.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded">React</span>
+                        <span class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded">Node.js</span>
+                        <span class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="portfolio-item relative rounded-xl overflow-hidden">
+                <img src="https://via.placeholder.com/600x400?text=Health+Tracking+App" alt="Health Tracking App" class="w-full h-64 object-cover">
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent p-6 flex flex-col justify-end">
+                    <h3 class="text-xl font-bold text-white mb-2">Health Tracking App</h3>
+                    <p class="text-gray-300 mb-4">Aplicación móvil para monitoreo de salud con wearables integration.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded">Flutter</span>
+                        <span class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded">Firebase</span>
+                        <span class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded">AI</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="portfolio-item relative rounded-xl overflow-hidden">
+                <img src="https://via.placeholder.com/600x400?text=ERP+System" alt="ERP System" class="w-full h-64 object-cover">
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent p-6 flex flex-col justify-end">
+                    <h3 class="text-xl font-bold text-white mb-2">ERP System</h3>
+                    <p class="text-gray-300 mb-4">Sistema de gestión empresarial para manufactura con analytics.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded">Angular</span>
+                        <span class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded">Java</span>
+                        <span class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded">PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 4 -->
+            <div class="portfolio-item relative rounded-xl overflow-hidden">
+                <img src="https://via.placeholder.com/600x400?text=Education+Platform" alt="Education Platform" class="w-full h-64 object-cover">
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent p-6 flex flex-col justify-end">
+                    <h3 class="text-xl font-bold text-white mb-2">Education Platform</h3>
+                    <p class="text-gray-300 mb-4">Plataforma de aprendizaje online con clases en vivo y gamificación.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded">Vue.js</span>
+                        <span class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded">Laravel</span>
+                        <span class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded">WebRTC</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 5 -->
+            <div class="portfolio-item relative rounded-xl overflow-hidden">
+                <img src="https://via.placeholder.com/600x400?text=FinTech+Dashboard" alt="FinTech Dashboard" class="w-full h-64 object-cover">
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent p-6 flex flex-col justify-end">
+                    <h3 class="text-xl font-bold text-white mb-2">FinTech Dashboard</h3>
+                    <p class="text-gray-300 mb-4">Panel de control para gestión de inversiones con visualización de datos.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded">React</span>
+                        <span class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded">D3.js</span>
+                        <span class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded">Python</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 6 -->
+            <div class="portfolio-item relative rounded-xl overflow-hidden">
+                <img src="https://via.placeholder.com/600x400?text=Travel+Booking" alt="Travel Booking" class="w-full h-64 object-cover">
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent p-6 flex flex-col justify-end">
+                    <h3 class="text-xl font-bold text-white mb-2">Travel Booking</h3>
+                    <p class="text-gray-300 mb-4">Sistema de reservas de viajes con integración de múltiples proveedores.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded">Next.js</span>
+                        <span class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded">NestJS</span>
+                        <span class="text-xs bg-purple-600 bg-opacity-70 text-white px-2 py-1 rounded">GraphQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-12">
+            <button class="btn-primary text-white px-8 py-3 rounded-full text-lg font-medium relative overflow-hidden">
+                Ver más proyectos
+            </button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="bg-gray-800 rounded-3xl p-8 md:p-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <span class="text-purple-500 font-medium">Contáctanos</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-6">Hablemos sobre <span class="gradient-text">tu proyecto</span></h2>
+                    <p class="text-gray-400 mb-8">
+                        Estamos listos para convertir tus ideas en realidad. Completa el formulario y nos pondremos en contacto contigo en menos de 24 horas.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt text-white"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-white">Oficina Principal</h4>
+                                <p class="text-gray-400 mt-1">Av. Tecnológico 1234, Ciudad de México</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center">
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-white">Correo Electrónico</h4>
+                                <p class="text-gray-400 mt-1">contacto@nexustech.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center">
+                                    <i class="fas fa-phone-alt text-white"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-white">Teléfono</h4>
+                                <p class="text-gray-400 mt-1">+52 55 1234 5678</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="text-lg font-medium text-white mb-4">Síguenos</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:gradient-bg transition-all">
+                                <i class="fab fa-facebook-f text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:gradient-bg transition-all">
+                                <i class="fab fa-twitter text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:gradient-bg transition-all">
+                                <i class="fab fa-linkedin-in text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:gradient-bg transition-all">
+                                <i class="fab fa-instagram text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-white mb-1">Nombre completo</label>
+                            <input type="text" id="name" name="name" class="input-field w-full px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none" placeholder="Ingresa tu nombre" required>
+                            <p class="text-red-500 text-sm mt-1 hidden" id="name-error">Por favor ingresa tu nombre</p>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-white mb-1">Correo electrónico</label>
+                            <input type="email" id="email" name="email" class="input-field w-full px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none" placeholder="Ingresa tu correo" required>
+                            <p class="text-red-500 text-sm mt-1 hidden" id="email-error">Por favor ingresa un correo válido</p>
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-white mb-1">Teléfono (opcional)</label>
+                            <input type="tel" id="phone" name="phone" class="input-field w-full px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none" placeholder="Ingresa tu teléfono">
+                        </div>
+                        
+                        <div>
+                            <label for="service" class="block text-sm font-medium text-white mb-1">Servicio de interés</label>
+                            <select id="service" name="service" class="input-field w-full px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none bg-gray-700">
+                                <option value="">Selecciona un servicio</option>
+                                <option value="web">Desarrollo Web</option>
+                                <option value="mobile">Apps Móviles</option>
+                                <option value="consulting">Consultoría Tecnológica</option>
+                                <option value="transform">Transformación Digital</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-white mb-1">Mensaje</label>
+                            <textarea id="message" name="message" rows="4" class="input-field w-full px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none" placeholder="Cuéntanos sobre tu proyecto" required></textarea>
+                            <p class="text-red-500 text-sm mt-1 hidden" id="message-error">Por favor ingresa un mensaje</p>
+                        </div>
+                        
+                        <div>
+                            <button type="submit" class="btn-primary w-full text-white px-6 py-4 rounded-lg text-lg font-medium relative overflow-hidden">
+                                Enviar mensaje
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-20">
+        <div class="rounded-2xl overflow-hidden h-96">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.88861497903!2d-99.1716826845936!3d19.427020746202446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff35f5bd1563%3A0x6c366f0e2de02ff7!2sEl%20%C3%81ngel%20de%20la%20Independencia!5e0!3m2!1ses-419!2smx!4v1622672436892!5m2!1ses-419!2smx" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 pt-16 pb-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <span class="text-2xl font-bold gradient-text">Nexus<span class="text-white">Tech</span></span>
+                    <p class="text-gray-400 mt-4">
+                        Transformando ideas en soluciones digitales desde 2013. Innovación, calidad y resultados.
+                    </p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:gradient-bg transition-all">
+                            <i class="fab fa-facebook-f text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:gradient-bg transition-all">
+                            <i class="fab fa-twitter text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:gradient-bg transition-all">
+                            <i class="fab fa-linkedin-in text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:gradient-bg transition-all">
+                            <i class="fab fa-instagram text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Servicios</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Desarrollo Web</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Apps Móviles</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Consultoría TI</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Transformación Digital</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">UI/UX Design</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Enlaces útiles</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Carreras</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Portafolio</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Testimonios</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Contacto</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-purple-500 mt-1 mr-3"></i>
+                            <span class="text-gray-400">Av. Tecnológico 1234, CDMX</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-purple-500 mt-1 mr-3"></i>
+                            <span class="text-gray-400">contacto@nexustech.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt text-purple-500 mt-1 mr-3"></i>
+                            <span class="text-gray-400">+52 55 1234 5678</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2023 NexusTech. Todos los derechos reservados.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Política de privacidad</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Términos de servicio</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loader animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simulate loading
+            setTimeout(function() {
+                document.querySelector('.loader').style.opacity = '0';
+                setTimeout(function() {
+                    document.querySelector('.loader').style.display = 'none';
+                    initAnimations();
+                }, 500);
+            }, 1500);
+            
+            // Initialize Lottie animations
+            const loaderAnim = lottie.loadAnimation({
+                container: document.getElementById('lottie-loader'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://assets5.lottiefiles.com/packages/lf20_usmfx6bp.json'
+            });
+            
+            const heroAnim = lottie.loadAnimation({
+                container: document.getElementById('lottie-hero'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://assets5.lottiefiles.com/packages/lf20_gnvq6rqj.json'
+            });
+            
+            const webAnim = lottie.loadAnimation({
+                container: document.getElementById('lottie-web'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://assets5.lottiefiles.com/packages/lf20_sk5h1kfn.json'
+            });
+            
+            const mobileAnim = lottie.loadAnimation({
+                container: document.getElementById('lottie-mobile'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://assets5.lottiefiles.com/packages/lf20_5tkzkful.json'
+            });
+            
+            const consultingAnim = lottie.loadAnimation({
+                container: document.getElementById('lottie-consulting'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://assets5.lottiefiles.com/packages/lf20_vybwn7df.json'
+            });
+            
+            const transformAnim = lottie.loadAnimation({
+                container: document.getElementById('lottie-transform'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://assets5.lottiefiles.com/packages/lf20_5itoujgj.json'
+            });
+            
+            const techAnim = lottie.loadAnimation({
+                container: document.getElementById('lottie-tech'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://assets5.lottiefiles.com/packages/lf20_iv4isxbu.json'
+            });
+            
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Dark/light mode toggle
+            const modeToggle = document.getElementById('toggle');
+            
+            modeToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                } else {
+                    document.documentElement.classList.remove('light');
+                    document.documentElement.classList.add('dark');
+                }
+            });
+            
+            // Testimonial slider
+            const testimonialSlides = document.getElementById('testimonial-slides');
+            const testimonialPrev = document.getElementById('testimonial-prev');
+            const testimonialNext = document.getElementById('testimonial-next');
+            let currentSlide = 0;
+            const slideCount = document.querySelectorAll('.testimonial-slide').length;
+            
+            function updateSlider() {
+                testimonialSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+            
+            testimonialNext.addEventListener('click', function() {
+                currentSlide = (currentSlide + 1) % slideCount;
+                updateSlider();
+            });
+            
+            testimonialPrev.addEventListener('click', function() {
+                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                updateSlider();
+            });
+            
+            // Auto slide
+            setInterval(function() {
+                currentSlide = (currentSlide + 1) % slideCount;
+                updateSlider();
+            }, 5000);
+            
+            // Animated counters
+            function animateCounters() {
+                const counters = document.querySelectorAll('.counter');
+                const speed = 200;
+                
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(animateCounters, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                });
+            }
+            
+            // Form validation
+            const contactForm = document.getElementById('contact-form');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let isValid = true;
+                
+                // Validate name
+                const name = document.getElementById('name');
+                const nameError = document.getElementById('name-error');
+                if (name.value.trim() === '') {
+                    name.classList.add('error');
+                    nameError.classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    name.classList.remove('error');
+                    nameError.classList.add('hidden');
+                }
+                
+                // Validate email
+                const email = document.getElementById('email');
+                const emailError = document.getElementById('email-error');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email.value)) {
+                    email.classList.add('error');
+                    emailError.classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    email.classList.remove('error');
+                    emailError.classList.add('hidden');
+                }
+                
+                // Validate message
+                const message = document.getElementById('message');
+                const messageError = document.getElementById('message-error');
+                if (message.value.trim() === '') {
+                    message.classList.add('error');
+                    messageError.classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    message.classList.remove('error');
+                    messageError.classList.add('hidden');
+                }
+                
+                if (isValid) {
+                    // Simulate form submission
+                    alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
+                    contactForm.reset();
+                }
+            });
+            
+            // Real-time validation
+            document.getElementById('name').addEventListener('input', function() {
+                if (this.value.trim() !== '') {
+                    this.classList.remove('error');
+                    document.getElementById('name-error').classList.add('hidden');
+                }
+            });
+            
+            document.getElementById('email').addEventListener('input', function() {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (emailRegex.test(this.value)) {
+                    this.classList.remove('error');
+                    document.getElementById('email-error').classList.add('hidden');
+                }
+            });
+            
+            document.getElementById('message').addEventListener('input', function() {
+                if (this.value.trim() !== '') {
+                    this.classList.remove('error');
+                    document.getElementById('message-error').classList.add('hidden');
+                }
+            });
+            
+            // Ripple effect for buttons
+            function createRipple(event) {
+                const button = event.currentTarget;
+                const circle = document.createElement('span');
+                const diameter = Math.max(button.clientWidth, button.clientHeight);
+                const radius = diameter / 2;
+                
+                circle.style.width = circle.style.height = `${diameter}px`;
+                circle.style.left = `${event.clientX - button.getBoundingClientRect().left - radius}px`;
+                circle.style.top = `${event.clientY - button.getBoundingClientRect().top - radius}px`;
+                circle.classList.add('ripple');
+                
+                const ripple = button.getElementsByClassName('ripple')[0];
+                if (ripple) {
+                    ripple.remove();
+                }
+                
+                button.appendChild(circle);
+            }
+            
+            const buttons = document.querySelectorAll('.btn-primary');
+            buttons.forEach(button => {
+                button.addEventListener('click', createRipple);
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+            
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('nav');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('shadow-xl');
+                    navbar.classList.add('bg-gray-900');
+                } else {
+                    navbar.classList.remove('shadow-xl');
+                    navbar.classList.remove('bg-gray-900');
+                }
+            });
+        });
+        
+        function initAnimations() {
+            // Initialize ScrollReveal
+            ScrollReveal().reveal('.gradient-text', {
+                duration: 1000,
+                delay: 200,
+                opacity: 0,
+                easing: 'cubic-bezier(0.5, 0, 0, 1)',
+                distance: '20px'
+            });
+            
+            ScrollReveal().reveal('h1, h2, h3, h4, h5, h6', {
+                duration: 1000,
+                delay: 200,
+                opacity: 0,
+                easing: 'cubic-bezier(0.5, 0, 0, 1)',
+                distance: '20px'
+            });
+            
+            ScrollReveal().reveal('p, .btn-primary', {
+                duration: 1000,
+                delay: 300,
+                opacity: 0,
+                easing: 'cubic-bezier(0.5, 0, 0, 1)',
+                distance: '20px'
+            });
+            
+            ScrollReveal().reveal('.service-card, .portfolio-item', {
+                duration: 1000,
+                delay: 200,
+                opacity: 0,
+                easing: 'cubic-bezier(0.5, 0, 0, 1)',
+                distance: '20px',
+                interval: 100
+            });
+            
+            ScrollReveal().reveal('.counter', {
+                duration: 2000,
+                delay: 200,
+                opacity: 0,
+                easing: 'cubic-bezier(0.5, 0, 0, 1)',
+                distance: '20px',
+                beforeReveal: function(el) {
+                    animateCounters();
+                }
+            });
+            
+            ScrollReveal().reveal('#lottie-hero, #lottie-tech', {
+                duration: 1000,
+                delay: 400,
+                opacity: 0,
+                easing: 'cubic-bezier(0.5, 0, 0, 1)',
+                distance: '20px'
+            });
+        }
+    </script>
+</body>
+</html>
