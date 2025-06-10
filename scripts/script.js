@@ -1,3 +1,19 @@
+
+
+// Mostrar tooltip automáticamente durante 3 segundos en móviles (y otros dispositivos)
+window.addEventListener("DOMContentLoaded", () => {
+    const tooltip = document.getElementById("whatsapp-tooltip");
+
+    // Mostrar tooltip
+    tooltip.classList.add("opacity-100");
+
+    // Ocultar después de 3 segundos
+    setTimeout(() => {
+        tooltip.classList.remove("opacity-100");
+    }, 5000);
+});
+
+
 // Mobile menu toggle
 const mobileMenuButton = document.getElementById("mobileMenuButton");
 const mobileMenu = document.getElementById("mobileMenu");
@@ -262,8 +278,5 @@ const animateOnScroll = () => {
 
 window.addEventListener("scroll", animateOnScroll);
 window.addEventListener("load", animateOnScroll);
-
-
-
 
 
